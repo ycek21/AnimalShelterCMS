@@ -34,3 +34,14 @@ mat-toolbar a {
     display: none;
   }
 }
+.sidenav-button {
+  display: flex;
+  align-content: flex-end;
+}
+.sidenav-logo {
+  height: fit-content;
+}
+.user-icon {
+  display: inline-flex;
+  vertical-align: middle;
+}
