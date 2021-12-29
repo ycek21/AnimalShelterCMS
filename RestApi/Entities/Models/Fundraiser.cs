@@ -15,9 +15,9 @@ namespace Entities.Models
         public DateTime FinishDate { get; set; }
 
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
         public ICollection<Donation> Donations { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace RestApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("AdoptionDate")
+                    b.Property<DateTime?>("AdoptionDate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("AnimalId")
@@ -56,6 +56,7 @@ namespace RestApi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Character")
+                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -66,6 +67,7 @@ namespace RestApi.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -75,10 +77,11 @@ namespace RestApi.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ModifiedBy")
+                    b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Sex")
@@ -116,6 +119,7 @@ namespace RestApi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
@@ -131,6 +135,7 @@ namespace RestApi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
@@ -147,10 +152,11 @@ namespace RestApi.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ModifiedBy")
+                    b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Key");
@@ -197,18 +203,20 @@ namespace RestApi.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FinishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Target")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -231,6 +239,7 @@ namespace RestApi.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Url")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -247,6 +256,7 @@ namespace RestApi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
@@ -265,6 +275,7 @@ namespace RestApi.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
@@ -272,14 +283,17 @@ namespace RestApi.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
@@ -339,25 +353,24 @@ namespace RestApi.Migrations
                     b.HasOne("Entities.Models.AnimalType", "AnimalType")
                         .WithMany("Animals")
                         .HasForeignKey("AnimalTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.Models.Color", "Color")
                         .WithMany("Animals")
                         .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.Models.User", "User")
                         .WithMany("Animals")
                         .HasForeignKey("ModifiedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Entities.Models.Size", "Size")
                         .WithMany("Animals")
                         .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("AnimalType");
@@ -374,8 +387,7 @@ namespace RestApi.Migrations
                     b.HasOne("Entities.Models.User", "User")
                         .WithMany("Configs")
                         .HasForeignKey("ModifiedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("User");
                 });
@@ -385,13 +397,13 @@ namespace RestApi.Migrations
                     b.HasOne("Entities.Models.Fundraiser", "Fundraiser")
                         .WithMany("Donations")
                         .HasForeignKey("FundraiserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Entities.Models.User", "User")
                         .WithMany("Donations")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Fundraiser");
@@ -404,8 +416,7 @@ namespace RestApi.Migrations
                     b.HasOne("Entities.Models.User", "User")
                         .WithMany("Fundraisers")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("User");
                 });

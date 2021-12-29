@@ -22,12 +22,12 @@ namespace Entities.Models
         public bool IsAdmin { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        public ICollection<Walk> Walks { get; set; }
-        public ICollection<Donation> Donations { get; set; }
-        public ICollection<Config> Configs { get; set; }
-        public ICollection<Fundraiser> Fundraisers { get; set; }
-        public ICollection<Animal> Animals { get; set; }
-        public ICollection<AdoptionApplication> AdoptionApplications { get; set; }
+        public ICollection<Walk>? Walks { get; set; }
+        public ICollection<Donation>? Donations { get; set; }
+        public ICollection<Config>? Configs { get; set; }
+        public ICollection<Fundraiser>? Fundraisers { get; set; }
+        public ICollection<Animal>? Animals { get; set; }
+        public ICollection<AdoptionApplication>? AdoptionApplications { get; set; }
 
     }
 }

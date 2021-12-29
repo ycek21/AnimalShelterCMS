@@ -13,9 +13,9 @@ namespace Entities.Models
         public DateTime ModifiedAt { get; set; }
 
         [ForeignKey("User")]
-        public Guid ModifiedBy { get; set; }
+        public Guid? ModifiedBy { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public Config()
         {

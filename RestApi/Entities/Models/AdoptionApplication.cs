@@ -8,7 +8,7 @@ namespace Entities.Models
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
-        public DateTime AdoptionDate { get; set; }
+        public DateTime? AdoptionDate { get; set; }
 
         [ForeignKey("User")]
         public Guid UserId { get; set; }

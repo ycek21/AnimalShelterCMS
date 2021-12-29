@@ -28,14 +28,14 @@ namespace Entities.Models
         [ForeignKey("AnimalType")]
         public Guid AnimalTypeId { get; set; }
         [ForeignKey("User")]
-        public Guid ModifiedBy { get; set; }
+        public Guid? ModifiedBy { get; set; }
 
         public Size Size { get; set; }
         public Color Color { get; set; }
         public AnimalType AnimalType { get; set; }
-        public User User { get; set; }
-        public ICollection<Walk> Walks { get; set; }
-        public ICollection<AdoptionApplication> AdoptionApplications { get; set; }
+        public User? User { get; set; }
+        public ICollection<Walk>? Walks { get; set; }
+        public ICollection<AdoptionApplication>? AdoptionApplications { get; set; }
         public ICollection<Image> Images { get; set; }
 
 

@@ -12,7 +12,7 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true)
+                    Value = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,7 +24,7 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true)
+                    Value = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +36,7 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true)
+                    Value = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,10 +48,10 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
-                    PasswordHash = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     IsAdmin = table.Column<bool>(type: "bit", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -65,10 +65,10 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
-                    Character = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Character = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Sex = table.Column<bool>(type: "bit", nullable: false),
                     Weight = table.Column<int>(type: "int", nullable: false),
                     WalkLimit = table.Column<int>(type: "int", nullable: false),
@@ -78,7 +78,7 @@ namespace RestApi.Migrations
                     SizeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AnimalTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -88,25 +88,25 @@ namespace RestApi.Migrations
                         column: x => x.AnimalTypeId,
                         principalTable: "AnimalTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Animals_Colors_ColorId",
                         column: x => x.ColorId,
                         principalTable: "Colors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Animals_Sizes_SizeId",
                         column: x => x.SizeId,
                         principalTable: "Sizes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Animals_Users_ModifiedBy",
                         column: x => x.ModifiedBy,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -114,9 +114,9 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Key = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -126,7 +126,7 @@ namespace RestApi.Migrations
                         column: x => x.ModifiedBy,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -135,11 +135,11 @@ namespace RestApi.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Target = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FinishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -149,7 +149,7 @@ namespace RestApi.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,7 +158,7 @@ namespace RestApi.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AdoptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AdoptionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -184,7 +184,7 @@ namespace RestApi.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsProfilePicture = table.Column<bool>(type: "bit", nullable: false),
                     AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -244,13 +244,13 @@ namespace RestApi.Migrations
                         column: x => x.FundraiserId,
                         principalTable: "Fundraisers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Donations_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
