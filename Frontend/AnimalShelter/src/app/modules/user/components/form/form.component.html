@@ -1,40 +1,189 @@
 <div class="container">
   <mat-card class="form-card">
-    <!-- <mat-card-header>Login/Register page</mat-card-header> -->
     <mat-card-content>
       <mat-tab-group mat-align-tabs="center">
         <mat-tab label="Login">
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Email" value="" />
-            <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Password" />
-            <mat-icon matSuffix>vpn_key</mat-icon>
-          </mat-form-field>
-          <button mat-raised-button color="primary">Login</button>
+          <form [formGroup]="loginForm">
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input
+                  type="email"
+                  matInput
+                  formControlName="email"
+                  placeholder="Email"
+                  value=""
+                />
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  loginForm.get('email')?.hasError('required') &&
+                  loginForm.get('email')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  placeholder="Password"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  loginForm.get('password')?.hasError('required') &&
+                  loginForm.get('password')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <section class="container__actionButtonWrapper">
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="loginForm.invalid"
+                (click)="login()"
+                type="submit"
+                class="container__actionButton"
+              >
+                Login
+              </button>
+            </section>
+          </form>
         </mat-tab>
         <mat-tab label="Register">
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Email" value="" />
-            <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Password" />
-            <mat-icon matSuffix>vpn_key</mat-icon>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Password" />
-            <mat-icon>vpn_key</mat-icon>
-          </mat-form-field>
-          <button mat-button color="primary">Register</button>
+          <form [formGroup]="registerForm">
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="name"
+                  placeholder="Name"
+                />
+                <mat-icon matSuffix>supervised_user_circle</mat-icon>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  registerForm.get('name')?.hasError('required') &&
+                  registerForm.get('name')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Surname</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="surname"
+                  placeholder="Surname"
+                />
+                <mat-icon matSuffix>person_outline</mat-icon>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  registerForm.get('surname')?.hasError('required') &&
+                  registerForm.get('surname')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Choose a date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="dateOfBirth"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  registerForm.get('dateOfBirth')?.hasError('required') &&
+                  registerForm.get('dateOfBirth')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input
+                  type="email"
+                  matInput
+                  formControlName="email"
+                  placeholder="Email"
+                />
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  registerForm.get('email')?.hasError('required') &&
+                  registerForm.get('email')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  formControlName="password"
+                  placeholder="Password"
+                />
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+              <span
+                class="container__formField--errors"
+                *ngIf="
+                  registerForm.get('password')?.hasError('required') &&
+                  registerForm.get('password')?.touched
+                "
+              >
+                This field is required
+              </span>
+            </div>
+            <section class="container__actionButtonWrapper">
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="registerForm.invalid"
+                (click)="register()"
+                type="submit"
+                class="container__actionButton--register"
+              >
+                Register
+              </button>
+            </section>
+          </form>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>
