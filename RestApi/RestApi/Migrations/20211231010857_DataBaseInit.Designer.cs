@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace RestApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20211229231135_DataBaseInit")]
+    [Migration("20211231010857_DataBaseInit")]
     partial class DataBaseInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,6 +128,18 @@ namespace RestApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AnimalTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9f3c56e5-1d9d-467b-8911-681df31a09d5"),
+                            Value = "Pies"
+                        },
+                        new
+                        {
+                            Id = new Guid("a94cff65-75c2-4fa2-851d-d6c6e8f99f34"),
+                            Value = "Kot"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Color", b =>
@@ -144,6 +156,68 @@ namespace RestApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ba76f0b0-5078-460f-8393-45866b95f99e"),
+                            Value = "Czarny"
+                        },
+                        new
+                        {
+                            Id = new Guid("4a8c6b6d-e507-40a4-a98c-de74e2685756"),
+                            Value = "Biały"
+                        },
+                        new
+                        {
+                            Id = new Guid("858e54f3-d17d-4424-b42a-6220ad8ac90b"),
+                            Value = "Mieszany"
+                        },
+                        new
+                        {
+                            Id = new Guid("42a1e6af-63d9-4ff4-9a9a-09485dca76e0"),
+                            Value = "Rudy"
+                        },
+                        new
+                        {
+                            Id = new Guid("714fb599-2ae8-4bb2-91f6-82ffa4e33fda"),
+                            Value = "Tricolor"
+                        },
+                        new
+                        {
+                            Id = new Guid("a59ef9f0-7ec4-4d3d-a309-d316944b0f8f"),
+                            Value = "Niebieski"
+                        },
+                        new
+                        {
+                            Id = new Guid("27239163-e452-4bf7-b626-40383a551b7f"),
+                            Value = "Pstrokaty"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f1b1c85-1415-4cf4-9544-f140cd5808c2"),
+                            Value = "Podpalane"
+                        },
+                        new
+                        {
+                            Id = new Guid("3045ab15-ef8f-411c-b47a-202173f3c7a2"),
+                            Value = "Marengo"
+                        },
+                        new
+                        {
+                            Id = new Guid("c5a40b99-adac-43a0-96fb-0af54d3c1b80"),
+                            Value = "Śniady"
+                        },
+                        new
+                        {
+                            Id = new Guid("f42550e6-7285-40c2-a179-299b46b32d0e"),
+                            Value = "Wilczy"
+                        },
+                        new
+                        {
+                            Id = new Guid("7287d6b7-c3bf-4ed4-a19f-26ff7e2608a8"),
+                            Value = "Dzicze"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Config", b =>
@@ -265,6 +339,33 @@ namespace RestApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c63a70f6-a6dc-4c78-bc3c-4ac75fab982a"),
+                            Value = "Bardzo mały"
+                        },
+                        new
+                        {
+                            Id = new Guid("04fe1641-6ed6-49ce-9a9e-304bde4f71b7"),
+                            Value = "Mały"
+                        },
+                        new
+                        {
+                            Id = new Guid("73c28da7-c919-44f1-9d70-bc47b7a0b268"),
+                            Value = "Duży"
+                        },
+                        new
+                        {
+                            Id = new Guid("45cc9bc0-c177-4839-8c61-f303be10e989"),
+                            Value = "Średni"
+                        },
+                        new
+                        {
+                            Id = new Guid("d83f5d94-f0ab-4934-82dd-2c1b434aab81"),
+                            Value = "Bardzo duży"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.User", b =>
@@ -302,6 +403,18 @@ namespace RestApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7bb7c9de-1cea-4216-b5e7-1a660f35693e"),
+                            DateOfBirth = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "animal.shelter@gmail.com",
+                            IsAdmin = true,
+                            Name = "Admin",
+                            PasswordHash = "xd",
+                            Surname = "Super"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Walk", b =>

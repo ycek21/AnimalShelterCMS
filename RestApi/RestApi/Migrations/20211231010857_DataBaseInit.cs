@@ -253,6 +253,51 @@ namespace RestApi.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AnimalTypes",
+                columns: new[] { "Id", "Value" },
+                values: new object[,]
+                {
+                    { new Guid("9f3c56e5-1d9d-467b-8911-681df31a09d5"), "Pies" },
+                    { new Guid("a94cff65-75c2-4fa2-851d-d6c6e8f99f34"), "Kot" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Colors",
+                columns: new[] { "Id", "Value" },
+                values: new object[,]
+                {
+                    { new Guid("7287d6b7-c3bf-4ed4-a19f-26ff7e2608a8"), "Dzicze" },
+                    { new Guid("f42550e6-7285-40c2-a179-299b46b32d0e"), "Wilczy" },
+                    { new Guid("c5a40b99-adac-43a0-96fb-0af54d3c1b80"), "Śniady" },
+                    { new Guid("3045ab15-ef8f-411c-b47a-202173f3c7a2"), "Marengo" },
+                    { new Guid("27239163-e452-4bf7-b626-40383a551b7f"), "Pstrokaty" },
+                    { new Guid("3f1b1c85-1415-4cf4-9544-f140cd5808c2"), "Podpalane" },
+                    { new Guid("714fb599-2ae8-4bb2-91f6-82ffa4e33fda"), "Tricolor" },
+                    { new Guid("42a1e6af-63d9-4ff4-9a9a-09485dca76e0"), "Rudy" },
+                    { new Guid("858e54f3-d17d-4424-b42a-6220ad8ac90b"), "Mieszany" },
+                    { new Guid("4a8c6b6d-e507-40a4-a98c-de74e2685756"), "Biały" },
+                    { new Guid("ba76f0b0-5078-460f-8393-45866b95f99e"), "Czarny" },
+                    { new Guid("a59ef9f0-7ec4-4d3d-a309-d316944b0f8f"), "Niebieski" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Sizes",
+                columns: new[] { "Id", "Value" },
+                values: new object[,]
+                {
+                    { new Guid("d83f5d94-f0ab-4934-82dd-2c1b434aab81"), "Bardzo duży" },
+                    { new Guid("c63a70f6-a6dc-4c78-bc3c-4ac75fab982a"), "Bardzo mały" },
+                    { new Guid("04fe1641-6ed6-49ce-9a9e-304bde4f71b7"), "Mały" },
+                    { new Guid("73c28da7-c919-44f1-9d70-bc47b7a0b268"), "Duży" },
+                    { new Guid("45cc9bc0-c177-4839-8c61-f303be10e989"), "Średni" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "DateOfBirth", "Email", "IsAdmin", "Name", "PasswordHash", "Surname" },
+                values: new object[] { new Guid("7bb7c9de-1cea-4216-b5e7-1a660f35693e"), new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "animal.shelter@gmail.com", true, "Admin", "xd", "Super" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AdoptionApplications_AnimalId",
                 table: "AdoptionApplications",

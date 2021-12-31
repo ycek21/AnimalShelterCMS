@@ -1,3 +1,4 @@
+using Entities.Configuration;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -68,6 +69,11 @@ namespace Entities
                 .WithMany(e => e.Configs)
                 .OnDelete(DeleteBehavior.SetNull);
 
+            // feed database with initial data
+            modelBuilder.ApplyConfiguration(new SizeConfiguration());
+            modelBuilder.ApplyConfiguration(new ColorConfiguration());
+            modelBuilder.ApplyConfiguration(new AnimalTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
