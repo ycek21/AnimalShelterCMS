@@ -13,7 +13,7 @@ namespace Entities.Configuration
             (
                 new User
                 {
-                    Id = Guid.NewGuid(),
+                    Id = "1",
                     Email = "animal.shelter@gmail.com",
                     Name = "Admin",
                     Surname = "Super",

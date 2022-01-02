@@ -35,6 +35,8 @@ namespace RestApi
             services.ConfigureCors();
             services.ConfigureLoggerService();
             services.ConfigureRepositoryManager();
+            services.AddAuthentication();
+            services.ConfigureIdentity();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -62,6 +64,7 @@ namespace RestApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

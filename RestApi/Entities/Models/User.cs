@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace Entities.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public Guid Id { get; set; }
+        public override string Id { get; set; }
 
         [MaxLength(60)]
         public string Email { get; set; }
