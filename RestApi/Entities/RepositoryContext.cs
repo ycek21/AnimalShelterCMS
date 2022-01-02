@@ -16,6 +16,8 @@ namespace Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            base.OnModelCreating(modelBuilder);
+
 
             modelBuilder.Entity<AdoptionApplication>()
                 .HasOne(c => c.User)
@@ -72,7 +74,7 @@ namespace Entities
                 .WithMany(e => e.Configs)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            base.OnModelCreating(modelBuilder);
+
 
             // feed database with initial data
             modelBuilder.ApplyConfiguration(new SizeConfiguration());

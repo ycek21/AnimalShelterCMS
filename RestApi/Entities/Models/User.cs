@@ -11,7 +11,7 @@ namespace Entities.Models
         public override string Id { get; set; }
 
         [MaxLength(60)]
-        public string Email { get; set; }
+        public override string Email { get; set; }
 
         [MaxLength(60)]
         public string Name { get; set; }
@@ -20,8 +20,6 @@ namespace Entities.Models
         public string Surname { get; set; }
 
         [MaxLength(256)]
-        public string PasswordHash { get; set; }
-        public bool IsAdmin { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         public ICollection<Walk>? Walks { get; set; }

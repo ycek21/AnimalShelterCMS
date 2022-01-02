@@ -18,7 +18,6 @@ namespace Entities.Configuration
                     Name = "Admin",
                     Surname = "Super",
                     PasswordHash = "xd",
-                    IsAdmin = true,
                     DateOfBirth = DateTime.Parse("2000-01-01"),
                 }
             );
