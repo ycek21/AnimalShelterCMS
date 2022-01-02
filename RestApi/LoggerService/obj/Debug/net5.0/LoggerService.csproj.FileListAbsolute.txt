@@ -1,0 +1,15 @@
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\bin\Debug\net5.0\LoggerService.deps.json
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\bin\Debug\net5.0\LoggerService.dll
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\bin\Debug\net5.0\ref\LoggerService.dll
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\bin\Debug\net5.0\LoggerService.pdb
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\bin\Debug\net5.0\Contracts.dll
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\bin\Debug\net5.0\Contracts.pdb
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.csproj.AssemblyReference.cache
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.GeneratedMSBuildEditorConfig.editorconfig
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.AssemblyInfoInputs.cache
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.AssemblyInfo.cs
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.csproj.CoreCompileInputs.cache
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.csproj.CopyComplete
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.dll
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\ref\LoggerService.dll
+X:\Projects\AnimalShelterCMS\RestApi\LoggerService\obj\Debug\net5.0\LoggerService.pdb

@@ -1,0 +1,12 @@
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.AssemblyInfoInputs.cache
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.AssemblyInfo.cs
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.csproj.CoreCompileInputs.cache
+X:\Projects\AnimalShelterCMS\RestApi\Entities\bin\Debug\net5.0\Entities.deps.json
+X:\Projects\AnimalShelterCMS\RestApi\Entities\bin\Debug\net5.0\Entities.dll
+X:\Projects\AnimalShelterCMS\RestApi\Entities\bin\Debug\net5.0\ref\Entities.dll
+X:\Projects\AnimalShelterCMS\RestApi\Entities\bin\Debug\net5.0\Entities.pdb
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.dll
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\ref\Entities.dll
+X:\Projects\AnimalShelterCMS\RestApi\Entities\obj\Debug\net5.0\Entities.pdb
