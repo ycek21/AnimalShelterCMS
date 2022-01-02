@@ -37,4 +37,5 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-RestApi/RestApi/internal_logs/internallog.txt
+/interalLogs
+
