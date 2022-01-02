@@ -80,7 +80,8 @@ namespace Entities
             modelBuilder.ApplyConfiguration(new SizeConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new AnimalTypeConfiguration());
-            // modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
 
 
