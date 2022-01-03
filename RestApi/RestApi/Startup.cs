@@ -34,6 +34,7 @@ namespace RestApi
             services.ConfigureSqlContext(Configuration);
             services.ConfigureCors();
             services.ConfigureLoggerService();
+            services.ConfigureRepositoryManager();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
