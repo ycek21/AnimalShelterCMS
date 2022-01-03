@@ -37,6 +37,7 @@ namespace RestApi
             services.ConfigureRepositoryManager();
             services.AddAuthentication();
             services.ConfigureIdentity();
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
