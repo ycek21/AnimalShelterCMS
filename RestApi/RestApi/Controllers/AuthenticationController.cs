@@ -1,4 +1,7 @@
 using System.Threading.Tasks;
+using AutoMapper;
+using Contracts;
+using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,24 +13,37 @@ namespace RestApi.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        //     private readonly IMapper _mapper;
-        //     private readonly UserManager<User> _userManager;
-        //     private readonly IAuthenticationManager _authManager;
-        //     private readonly IEmailSender _emailSender;
-        //     private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
+        private readonly ILoggerManager _logger;
+        private readonly UserManager<User> _userManager;
 
-        //     public AuthenticationController(UserManager<User> userManager, IMapper mapper,
-        //                                     IAuthenticationManager authManager, IEmailSender emailSender,
-        //                                     IConfiguration configuration)
-        //     {
-        //         _mapper = mapper;
-        //         _userManager = userManager;
-        //         _authManager = authManager;
-        //         _emailSender = emailSender;
-        //         _configuration = configuration;
-        //     }
+        public AuthenticationController(UserManager<User> userManager, IMapper mapper, ILoggerManager logger)
+        {
+            _mapper = mapper;
+            _userManager = userManager;
+            _logger = logger;
+        }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterUser([FromBody] UserForCreationDto userForCreation)
+        {
+            var user = _mapper.Map<User>(userForCreation);
 
-        // }
+            var result = await _userManager.CreateAsync(user, userForCreation.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                return BadRequest(ModelState);
+            }
+            await _userManager.AddToRolesAsync(user, userForCreation.Roles);
+
+            return StatusCode(201);
+        }
+
     }
 }
+

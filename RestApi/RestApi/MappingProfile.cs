@@ -12,7 +12,10 @@ namespace RestApi
     {
         public MappingProfile()
         {
-            CreateMap<User, UserForCreationDto>();
+            CreateMap<UserForCreationDto, User>()
+                .ForMember(dest =>
+                    dest.UserName,
+                    opt => opt.MapFrom(src => src.Email));
         }
     }
 }
