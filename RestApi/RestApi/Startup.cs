@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts;
 using Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NLog;
+using RestApi.Utility;
 
 namespace RestApi
 {
@@ -37,7 +39,9 @@ namespace RestApi
             services.ConfigureRepositoryManager();
             services.AddAuthentication();
             services.ConfigureIdentity();
+            services.ConfigureJWT(Configuration);
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IAuthenticationManager, AuthenticationManager>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

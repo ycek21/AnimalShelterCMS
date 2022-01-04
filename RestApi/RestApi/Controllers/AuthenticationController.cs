@@ -16,12 +16,14 @@ namespace RestApi.Controllers
         private readonly IMapper _mapper;
         private readonly ILoggerManager _logger;
         private readonly UserManager<User> _userManager;
+        private readonly IAuthenticationManager _authManager;
 
-        public AuthenticationController(UserManager<User> userManager, IMapper mapper, ILoggerManager logger)
+        public AuthenticationController(UserManager<User> userManager, IMapper mapper, ILoggerManager logger, IAuthenticationManager authManager)
         {
             _mapper = mapper;
             _userManager = userManager;
             _logger = logger;
+            _authManager = authManager;
         }
 
         [HttpPost("register")]
@@ -44,6 +46,19 @@ namespace RestApi.Controllers
             return StatusCode(201);
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
+        {
+            if (!await _authManager.ValidateUser(user))
+            {
+                _logger.LogWarn($"{nameof(Authenticate)}: Authentication failed. Wrong user name or password.");
+                return Unauthorized();
+            }
+            return Ok(new { Token = await _authManager.CreateToken() });
+        }
     }
+
+
 }
+
 

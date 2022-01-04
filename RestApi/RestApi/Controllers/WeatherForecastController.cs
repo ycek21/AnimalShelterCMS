@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contracts;
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +28,7 @@ namespace RestApi.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<IActionResult> Get()
         {
             // _logger.LogInfo("Here is info message from our values controller.");
