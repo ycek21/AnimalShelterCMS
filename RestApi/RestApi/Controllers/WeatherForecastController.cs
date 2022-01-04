@@ -28,7 +28,7 @@ namespace RestApi.Controllers
             _repository = repository;
         }
 
-        [HttpGet, Authorize]
+        [HttpGet, Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Get()
         {
             // _logger.LogInfo("Here is info message from our values controller.");

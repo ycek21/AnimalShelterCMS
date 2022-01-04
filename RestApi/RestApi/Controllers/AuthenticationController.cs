@@ -52,7 +52,7 @@ namespace RestApi.Controllers
             if (!await _authManager.ValidateUser(user))
             {
                 _logger.LogWarn($"{nameof(Authenticate)}: Authentication failed. Wrong user name or password.");
-                return Unauthorized();
+                return Unauthorized("Authentication failed. Wrong user name or password.");
             }
             return Ok(new { Token = await _authManager.CreateToken() });
         }

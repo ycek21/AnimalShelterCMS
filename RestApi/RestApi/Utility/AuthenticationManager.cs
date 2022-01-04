@@ -86,6 +86,8 @@ namespace RestApi.Utility
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
 
+
+            // default attributes in JWT, change if necessary
             var tokenOptions = new JwtSecurityToken
             (
                 issuer: jwtSettings.GetSection("validIssuer").Value,
