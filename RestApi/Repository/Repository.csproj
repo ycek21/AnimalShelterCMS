@@ -2,8 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
-    <!-- determine whether this reference is necessary -->
-    <!-- <ProjectReference Include="..\Entities\Entities.csproj" /> -->
+
   </ItemGroup>
 
   <PropertyGroup>
