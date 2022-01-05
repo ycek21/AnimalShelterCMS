@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -11,6 +10,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TimestampToDatePipe } from './shared/pipes/timestamp-to-date.pipe';
+import { AuthInterceptor } from './modules/user/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -24,8 +26,16 @@ import { AppRoutingModule } from './app-routing.module';
     MatIconModule,
     MatListModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    TimestampToDatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

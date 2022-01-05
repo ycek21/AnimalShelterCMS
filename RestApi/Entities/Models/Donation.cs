@@ -11,7 +11,7 @@ namespace Entities.Models
         public int Amount { get; set; }
 
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey("Fundraiser")]
         public Guid FundraiserId { get; set; }

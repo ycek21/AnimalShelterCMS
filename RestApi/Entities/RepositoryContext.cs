@@ -1,10 +1,11 @@
 using Entities.Configuration;
 using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entities
 {
-    public class RepositoryContext : DbContext
+    public class RepositoryContext : IdentityDbContext<User>
     {
         public RepositoryContext(DbContextOptions options)
             : base(options)
@@ -14,6 +15,10 @@ namespace Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
+
             modelBuilder.Entity<AdoptionApplication>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.AdoptionApplications).OnDelete(DeleteBehavior.Cascade);
@@ -69,13 +74,14 @@ namespace Entities
                 .WithMany(e => e.Configs)
                 .OnDelete(DeleteBehavior.SetNull);
 
+
+
             // feed database with initial data
             modelBuilder.ApplyConfiguration(new SizeConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new AnimalTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
 
 
@@ -87,7 +93,7 @@ namespace Entities
         public DbSet<Walk> Walks { get; set; }
         public DbSet<AdoptionApplication> AdoptionApplications { get; set; }
         public DbSet<Config> Configs { get; set; }
-        public DbSet<User> Users { get; set; }
+        // public DbSet<User> Users { get; set; }
         public DbSet<Donation> Donations { get; set; }
         public DbSet<Fundraiser> Fundraisers { get; set; }
     }

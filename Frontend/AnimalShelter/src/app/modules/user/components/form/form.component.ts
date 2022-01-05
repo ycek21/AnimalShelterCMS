@@ -1,3 +1,8 @@
+import jwt_decode from 'jwt-decode';
+import { DecodedToken } from './../../models/decoded-token';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { AuthService } from './../../services/auth.service';
+import { LoginCredentials } from './../../models/login-credentials';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -5,6 +10,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -27,15 +33,41 @@ export class FormComponent implements OnInit {
     ],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
   login() {
-    console.log(this.loginForm.value);
+    const credentials: LoginCredentials = this.loginForm.value;
+    credentials.email.trim();
+    this.authService.login(credentials).subscribe(
+      (response: HttpResponse<string>) => {
+        const token = response.body!['token'];
+        console.log(response.body!['token']);
+        if (token) {
+          const decodedToken: DecodedToken = jwt_decode(token);
+          localStorage.setItem('userToken', token);
+          this.authService.setLogged(true);
+          this.router.navigate(['home']);
+        }
+      },
+      (error: HttpErrorResponse) => {
+        if (error.status === 403) {
+          console.log('iSForbidded');
+          this.loginForm.reset();
+        }
+      }
+    );
   }
 
   register() {
     console.log(this.registerForm.value);
+    this.authService.register(this.registerForm.value).subscribe((resp) => {
+      console.log(resp);
+    });
   }
   validatorPassword(fc: FormControl) {
     const value = fc.value as string;

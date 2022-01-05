@@ -11,7 +11,7 @@ namespace Entities.Models
         public DateTime? AdoptionDate { get; set; }
 
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("Animal")]
         public Guid AnimalId { get; set; }
 
