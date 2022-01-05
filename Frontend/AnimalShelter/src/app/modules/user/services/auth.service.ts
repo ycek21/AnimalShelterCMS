@@ -1,3 +1,4 @@
+import { REGISTER_URL } from './../../../shared/consts';
 import { LoginCredentials } from './../models/login-credentials';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -47,5 +48,9 @@ export class AuthService {
   }
   isUserLoggedIn(): Observable<boolean> {
     return this.loginSubject$.asObservable();
+  }
+  register(registerForm: any) {
+    const url = REGISTER_URL;
+    return this.http.post(url, registerForm);
   }
 }

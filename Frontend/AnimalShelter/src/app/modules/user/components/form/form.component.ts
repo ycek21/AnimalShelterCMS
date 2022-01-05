@@ -45,8 +45,8 @@ export class FormComponent implements OnInit {
     credentials.email.trim();
     this.authService.login(credentials).subscribe(
       (response: HttpResponse<string>) => {
-        const token = response.headers.get('Authorization');
-
+        const token = response.body!['token'];
+        console.log(response.body!['token']);
         if (token) {
           const decodedToken: DecodedToken = jwt_decode(token);
           localStorage.setItem('userToken', token);
@@ -61,12 +61,13 @@ export class FormComponent implements OnInit {
         }
       }
     );
-
-    console.log(this.loginForm.value);
   }
 
   register() {
     console.log(this.registerForm.value);
+    this.authService.register(this.registerForm.value).subscribe((resp) => {
+      console.log(resp);
+    });
   }
   validatorPassword(fc: FormControl) {
     const value = fc.value as string;

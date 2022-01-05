@@ -10,8 +10,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TimestampToDatePipe } from './shared/pipes/timestamp-to-date.pipe';
+import { AuthInterceptor } from './modules/user/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -27,7 +28,14 @@ import { TimestampToDatePipe } from './shared/pipes/timestamp-to-date.pipe';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [TimestampToDatePipe],
+  providers: [
+    TimestampToDatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
