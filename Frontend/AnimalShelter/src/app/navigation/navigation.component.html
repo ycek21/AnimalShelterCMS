@@ -18,14 +18,18 @@
       <a mat-list-item routerLink="/fundraisers" (click)="drawer.toggle()"
         >Fundraisers</a
       >
+      <a mat-list-item routerLink="/user" (click)="drawer.toggle()"
+        ><mat-icon class="user-icon">people_outline</mat-icon></a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <!-- <img src="assets/pawprint.png" /> -->
-      <span>AnimalShelter</span>
+    <mat-toolbar>
+      <span class="title" routerLink="/home">
+        <img class="toolbar__logo" src="assets/paw.png" />AnimalShelter</span
+      >
       <span class="spacer"></span>
-      <span class="items">
+      <span class="toolbar__items">
         <a routerLink="/home">Home</a>
         <a routerLink="/about">About</a>
         <a routerLink="/adoptions">Adoptions</a>
@@ -45,6 +49,9 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
     </mat-toolbar>
+    <div class="sub__header">
+      <span class="sub__header--text"> {{ subTitle }}</span>
+    </div>
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
