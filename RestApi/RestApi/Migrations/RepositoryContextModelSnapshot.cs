@@ -34,8 +34,9 @@ namespace RestApi.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -77,8 +78,8 @@ namespace RestApi.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -130,12 +131,12 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9f3c56e5-1d9d-467b-8911-681df31a09d5"),
+                            Id = new Guid("f3881d2a-9260-41ef-97d3-db1db4192728"),
                             Value = "Pies"
                         },
                         new
                         {
-                            Id = new Guid("a94cff65-75c2-4fa2-851d-d6c6e8f99f34"),
+                            Id = new Guid("ff6aa101-cccc-4e0f-9024-f330c4c9f526"),
                             Value = "Kot"
                         });
                 });
@@ -158,62 +159,62 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ba76f0b0-5078-460f-8393-45866b95f99e"),
+                            Id = new Guid("2cb8c27e-2a3f-4e25-abb8-5c4a7d7367cb"),
                             Value = "Czarny"
                         },
                         new
                         {
-                            Id = new Guid("4a8c6b6d-e507-40a4-a98c-de74e2685756"),
+                            Id = new Guid("c53d2623-44ca-4b34-9240-6222a72d6400"),
                             Value = "Biały"
                         },
                         new
                         {
-                            Id = new Guid("858e54f3-d17d-4424-b42a-6220ad8ac90b"),
+                            Id = new Guid("f9274529-6349-4b8c-b2a6-c5c6eaf2480a"),
                             Value = "Mieszany"
                         },
                         new
                         {
-                            Id = new Guid("42a1e6af-63d9-4ff4-9a9a-09485dca76e0"),
+                            Id = new Guid("20ba9c93-8378-4bfd-bae3-baa2b7f9c3a3"),
                             Value = "Rudy"
                         },
                         new
                         {
-                            Id = new Guid("714fb599-2ae8-4bb2-91f6-82ffa4e33fda"),
+                            Id = new Guid("128bbd32-0d9d-47de-937c-704466e9a4da"),
                             Value = "Tricolor"
                         },
                         new
                         {
-                            Id = new Guid("a59ef9f0-7ec4-4d3d-a309-d316944b0f8f"),
+                            Id = new Guid("c6440bc9-5331-40b4-ae02-3d845bf795ae"),
                             Value = "Niebieski"
                         },
                         new
                         {
-                            Id = new Guid("27239163-e452-4bf7-b626-40383a551b7f"),
+                            Id = new Guid("4fe0c397-c07a-4c21-943a-5669c475ed5b"),
                             Value = "Pstrokaty"
                         },
                         new
                         {
-                            Id = new Guid("3f1b1c85-1415-4cf4-9544-f140cd5808c2"),
+                            Id = new Guid("e0d71fc3-2e4e-44bb-9035-1cd1a8a459c4"),
                             Value = "Podpalane"
                         },
                         new
                         {
-                            Id = new Guid("3045ab15-ef8f-411c-b47a-202173f3c7a2"),
+                            Id = new Guid("dc89c7fd-4f7a-4ce5-ba5c-8a193ddeccbc"),
                             Value = "Marengo"
                         },
                         new
                         {
-                            Id = new Guid("c5a40b99-adac-43a0-96fb-0af54d3c1b80"),
+                            Id = new Guid("0cc3cedf-7157-4b7f-9922-09f5b623f8eb"),
                             Value = "Śniady"
                         },
                         new
                         {
-                            Id = new Guid("f42550e6-7285-40c2-a179-299b46b32d0e"),
+                            Id = new Guid("d2d2eafa-0937-4eb3-a205-e5b2e6b218dd"),
                             Value = "Wilczy"
                         },
                         new
                         {
-                            Id = new Guid("7287d6b7-c3bf-4ed4-a19f-26ff7e2608a8"),
+                            Id = new Guid("0366c800-7f11-40c9-8165-45432bbe922d"),
                             Value = "Dzicze"
                         });
                 });
@@ -226,8 +227,8 @@ namespace RestApi.Migrations
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .IsRequired()
@@ -255,8 +256,9 @@ namespace RestApi.Migrations
                     b.Property<Guid>("FundraiserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -290,8 +292,8 @@ namespace RestApi.Migrations
                     b.Property<int>("Target")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -341,77 +343,126 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c63a70f6-a6dc-4c78-bc3c-4ac75fab982a"),
+                            Id = new Guid("ebc073c2-e5e0-4897-8638-4e88b4ffb16c"),
                             Value = "Bardzo mały"
                         },
                         new
                         {
-                            Id = new Guid("04fe1641-6ed6-49ce-9a9e-304bde4f71b7"),
+                            Id = new Guid("cc5a76e4-352f-42f5-8e43-2a202b867eef"),
                             Value = "Mały"
                         },
                         new
                         {
-                            Id = new Guid("73c28da7-c919-44f1-9d70-bc47b7a0b268"),
+                            Id = new Guid("519bf762-1860-40fe-bb19-4d28106d0c03"),
                             Value = "Duży"
                         },
                         new
                         {
-                            Id = new Guid("45cc9bc0-c177-4839-8c61-f303be10e989"),
+                            Id = new Guid("0b32ad7f-628e-461c-b8a8-92ea4f97d844"),
                             Value = "Średni"
                         },
                         new
                         {
-                            Id = new Guid("d83f5d94-f0ab-4934-82dd-2c1b434aab81"),
+                            Id = new Guid("b3dab2de-b8b7-47dc-a627-f928877a53de"),
                             Value = "Bardzo duży"
                         });
                 });
 
             modelBuilder.Entity("Entities.Models.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
+                        .HasMaxLength(256)
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<bool>("IsAdmin")
+                    b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
+                    b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7bb7c9de-1cea-4216-b5e7-1a660f35693e"),
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "59319ef6-b427-4fd3-834f-4417ec0e8b28",
                             DateOfBirth = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "animal.shelter@gmail.com",
-                            IsAdmin = true,
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
                             Name = "Admin",
                             PasswordHash = "xd",
-                            Surname = "Super"
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "4b2bb99b-0470-4dff-b2f9-2b332975e06f",
+                            Surname = "Super",
+                            TwoFactorEnabled = false
                         });
                 });
 
@@ -430,8 +481,9 @@ namespace RestApi.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -440,6 +492,153 @@ namespace RestApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Walks");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4c418813-1ce5-4ade-ad4c-d2b91357bd08",
+                            ConcurrencyStamp = "dcb82592-6ec9-4d72-b87c-f6378110919a",
+                            Name = "CommonUser",
+                            NormalizedName = "COMMON"
+                        },
+                        new
+                        {
+                            Id = "b6a4461c-0a87-4a56-bfa7-431d5df7e778",
+                            ConcurrencyStamp = "c23336eb-56ce-4aed-b28b-a153bec47f79",
+                            Name = "Administrator",
+                            NormalizedName = "ADMIN"
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens");
                 });
 
             modelBuilder.Entity("Entities.Models.AdoptionApplication", b =>
@@ -562,6 +761,57 @@ namespace RestApi.Migrations
                     b.Navigation("Animal");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Models.Animal", b =>

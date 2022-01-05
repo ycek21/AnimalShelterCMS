@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="{ hidden: !(isHandset$ | async)! }"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" (click)="drawer.toggle()">Home</a>
+      <a mat-list-item routerLink="/about" (click)="drawer.toggle()">About</a>
+      <a mat-list-item routerLink="/adoptions" (click)="drawer.toggle()"
+        >Adoptions</a
+      >
+      <a mat-list-item routerLink="/fundraisers" (click)="drawer.toggle()"
+        >Fundraisers</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <!-- <img src="assets/pawprint.png" /> -->
+      <span>AnimalShelter</span>
+      <span class="spacer"></span>
+      <span class="items">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/about">About</a>
+        <a routerLink="/adoptions">Adoptions</a>
+        <a routerLink="/fundraisers">Fundraisers</a>
+        <a routerLink="/user">
+          <mat-icon class="user-icon">people_outline</mat-icon>
+        </a>
+      </span>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        class="sidenav-button"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

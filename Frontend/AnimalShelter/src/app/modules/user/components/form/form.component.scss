@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25vh;
+  // min-height: 20vh;
+}
+.example-full-width {
+  width: 100%;
+}
+.form-button {
+  display: flex;
+  justify-content: center;
+}
+.container__formField--errors {
+  color: red;
+  font-size: small;
+}
+.container__actionButton {
+  margin-top: 5%;
+  width: 35%;
+}
+.container__actionButtonWrapper {
+  display: flex;
+  justify-content: center;
+}
+.container__actionButton--register {
+  margin-top: 2%;
+  width: 35%;
+}

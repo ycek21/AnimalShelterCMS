@@ -12,7 +12,7 @@ namespace Entities.Models
         [ForeignKey("Animal")]
         public Guid AnimalId { get; set; }
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         public Animal Animal { get; set; }
         public User User { get; set; }

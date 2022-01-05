@@ -28,7 +28,7 @@ namespace Entities.Models
         [ForeignKey("AnimalType")]
         public Guid AnimalTypeId { get; set; }
         [ForeignKey("User")]
-        public Guid? ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
 
         public Size Size { get; set; }
         public Color Color { get; set; }
