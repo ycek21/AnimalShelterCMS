@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Runtime.Serialization;
 
 namespace Entities.Models
 {
@@ -11,8 +11,10 @@ namespace Entities.Models
         public bool IsProfilePicture { get; set; }
 
         [ForeignKey("Animal")]
+        [IgnoreDataMember]
         public Guid AnimalId { get; set; }
 
+        [IgnoreDataMember]
         public Animal Animal { get; set; }
     }
 }

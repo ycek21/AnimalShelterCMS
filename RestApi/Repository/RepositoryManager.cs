@@ -11,6 +11,7 @@ namespace Repository
     {
         private RepositoryContext _repositoryContext;
         private IUserRepository _userRepository;
+        private IAnimalRepository _animalRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -24,6 +25,16 @@ namespace Repository
                 if (_userRepository == null)
                     _userRepository = new UserRepository(_repositoryContext);
                 return _userRepository;
+            }
+        }
+
+        public IAnimalRepository Animal
+        {
+            get
+            {
+                if (_animalRepository == null)
+                    _animalRepository = new AnimalRepository(_repositoryContext);
+                return _animalRepository;
             }
         }
 

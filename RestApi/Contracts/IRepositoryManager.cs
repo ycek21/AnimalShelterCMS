@@ -8,6 +8,8 @@ namespace Contracts
     public interface IRepositoryManager
     {
         IUserRepository User { get; }
+        IAnimalRepository Animal { get; }
+
         void Save();
         Task SaveAsync();
     }
