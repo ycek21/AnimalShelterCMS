@@ -6,9 +6,11 @@ using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace RestApi.Controllers
 {
@@ -34,11 +36,13 @@ namespace RestApi.Controllers
         }
 
         [HttpGet, Authorize]
-        public async Task<IActionResult> GetAllAnimals()
+        public async Task<IActionResult> GetAllAnimals([FromQuery] AnimalParameters animalParameters)
         {
             try
             {
-                var animals = await _repository.Animal.GetAllAnimalsAsync(false);
+                var animals = await _repository.Animal.GetAllAnimalsAsync(false, animalParameters);
+
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(animals.MetaData));
 
                 var animalDto = _mapper.Map<IEnumerable<AnimalForAnimalListDto>>(animals);
 
