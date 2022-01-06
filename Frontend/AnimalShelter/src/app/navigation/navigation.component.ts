@@ -47,6 +47,10 @@ export class NavigationComponent implements OnInit {
               this.subTitle = 'Users';
               break;
             }
+            case '/animals': {
+              this.subTitle = 'Animals';
+              break;
+            }
           }
         }
       });
