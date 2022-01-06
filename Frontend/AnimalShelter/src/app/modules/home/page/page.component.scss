@@ -20,6 +20,7 @@
   top: 20%; /* vertical alignment */
   transform: translate(-50%, -50%);
   font-size: 3vh;
+  font-family: "Montserrat";
 }
 .blocks {
   display: flex;
@@ -76,4 +77,3 @@
 .img:focus {
   filter: brightness(0) invert(1);
 }
-
