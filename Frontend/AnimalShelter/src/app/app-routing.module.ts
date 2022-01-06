@@ -32,6 +32,11 @@ const routes: Routes = [
       import('./modules/user/user.module').then((m) => m.UserModule),
   },
   {
+    path: 'animals',
+    loadChildren: () =>
+      import('./modules/animals/animals.module').then((m) => m.AnimalsModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
