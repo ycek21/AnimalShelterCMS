@@ -1,1 +1,33 @@
-<p>Animals page works!</p>
+<!-- <div fxFill fxLayout="column" fxLayoutAlign="space-between">
+  <div fxLayout="row wrap" class="box">
+    <ng-container *ngFor="let data of dataSource">
+      <img [src]="data.images[0].url" title="Hover text" />
+    </ng-container>
+  </div>
+
+  <mat-paginator
+    [length]="dataSource.length"
+    [pageSize]="2"
+    [pageSizeOptions]="[3, 4, 5]"
+  >
+  </mat-paginator>
+</div> -->
+
+<div class="gallery">
+  <ng-container *ngFor="let data of dataSource">
+    <div class="gallery__group">
+      <img class="gallery__img" [src]="data.images[0].url" />
+      <div class="gallery__text">
+        <span class="gallery__text-desc">{{ data.name }}</span>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div class="footer">
+  <mat-paginator
+    [length]="dataSource.length"
+    [pageSize]="2"
+    [pageSizeOptions]="[3, 4, 5]"
+  >
+  </mat-paginator>
+</div>
