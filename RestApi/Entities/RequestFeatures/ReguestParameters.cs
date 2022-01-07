@@ -24,6 +24,9 @@ namespace Entities.RequestFeatures
     }
     public class AnimalParameters : RequestParameters
     {
+        public string? AnimalType { get; set; }
+        public string? Color { get; set; }
+        public string? Size { get; set; }
     }
 
 }

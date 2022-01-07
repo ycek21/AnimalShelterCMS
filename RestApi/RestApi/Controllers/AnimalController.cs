@@ -38,9 +38,16 @@ namespace RestApi.Controllers
         [HttpGet, Authorize]
         public async Task<IActionResult> GetAllAnimals([FromQuery] AnimalParameters animalParameters)
         {
+
+            if (!animalParameters.ValidAgeRange)
+            {
+                return BadRequest("Max age can't be less than min age");
+            }
+
             try
             {
-                var animals = await _repository.Animal.GetAllAnimalsAsync(false, animalParameters);
+
+                var animals = await _repository.Animal.GetAllAnimalsWithFilterAsync(false, animalParameters);
 
                 Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(animals.MetaData));
 
