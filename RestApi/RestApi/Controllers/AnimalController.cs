@@ -55,8 +55,21 @@ namespace RestApi.Controllers
 
                 return BadRequest();
             }
+        }
 
+        [HttpGet("{animalId}"), Authorize]
+        public async Task<IActionResult> GetAnimalById(Guid animalId)
+        {
+            var animal = await _repository.Animal.GetAnimalById(animalId, false);
 
+            if (animal == null)
+            {
+                return NotFound("Animal with such Id doesn't exist");
+            }
+
+            var animalDto = _mapper.Map<AnimalDto>(animal);
+
+            return Ok(animalDto);
         }
     }
 }

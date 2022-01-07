@@ -29,5 +29,16 @@ namespace Repository
 
             return PagedList<Animal>.ToPagedList(animals, animalParameters.PageNumber, animalParameters.PageSize);
         }
+
+        public async Task<Animal> GetAnimalById(Guid AnimalId, bool trackChanges)
+        {
+            return await FindByCondition(a => a.Id == AnimalId, false)
+            .Include(a => a.Images)
+            .Include(a => a.Walks)
+            .Include(a => a.Size)
+            .Include(a => a.Color)
+            .Include(a => a.AnimalType)
+            .FirstOrDefaultAsync();
+        }
     }
 }
