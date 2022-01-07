@@ -15,5 +15,5 @@ export interface Animal {
   size: string;
   color: string;
   animalType: string;
-  images: Img;
+  images: Img[];
 }

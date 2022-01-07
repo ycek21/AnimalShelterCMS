@@ -2,6 +2,7 @@ import { AnimalsService } from './../services/animals.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Animal } from '../models/animal';
+import { Img } from '../models/image';
 
 @Component({
   selector: 'app-details-page',
@@ -10,6 +11,7 @@ import { Animal } from '../models/animal';
 })
 export class DetailsPageComponent implements OnInit {
   animal: Animal;
+  profileUrl: Img;
   constructor(
     private route: ActivatedRoute,
     private animalsService: AnimalsService
@@ -24,6 +26,10 @@ export class DetailsPageComponent implements OnInit {
     this.animalsService.getAnimal(id).subscribe((resp) => {
       console.log(resp);
       this.animal = resp;
+      this.profileUrl = this.animal.images.find(
+        (i) => i.isProfilePicture === true
+      );
+      console.log(this.profileUrl);
     });
   }
 }

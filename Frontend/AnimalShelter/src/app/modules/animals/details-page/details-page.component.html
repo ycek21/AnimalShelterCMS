@@ -1,8 +1,13 @@
 <div class="grid-container">
-  <div class="photo_wrapper">sdsd</div>
+  <div class="photo_wrapper">
+    <img class="photo__img" src="{{ profileUrl.url }}" />
+  </div>
   <div class="text__wrapper">
     <div class="text__wrapper-title">
-      <h2>Nazwa zwierzaka</h2>
+      <h2>{{ animal.name }}</h2>
+    </div>
+    <div class="text__wrapper-desc">
+      {{ animal.description }}
     </div>
   </div>
 </div>
