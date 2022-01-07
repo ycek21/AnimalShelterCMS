@@ -17,6 +17,7 @@ export class NavigationComponent implements OnInit {
       shareReplay()
     );
   subTitle: string = '';
+  subHeader: boolean = true;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router
@@ -25,7 +26,6 @@ export class NavigationComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
         if (event instanceof NavigationEnd) {
-          console.log(event.url);
           switch (event.url) {
             case '/home': {
               this.subTitle = 'Home';
@@ -51,6 +51,10 @@ export class NavigationComponent implements OnInit {
               this.subTitle = 'Animals';
               break;
             }
+            // case event.url.match('/animals/')?.input: {
+            //   this.subHeader = false;
+            //   break;
+            // }
           }
         }
       });
