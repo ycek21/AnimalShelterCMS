@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
+using Service;
 
 namespace Extensions
 {
@@ -82,7 +83,8 @@ namespace Extensions
             });
         }
 
-
+        public static void ConfigureAnimalTraitService(this IServiceCollection services) =>
+                services.AddScoped<IAnimalTraitService, AnimalTraitService>();
 
     }
 }

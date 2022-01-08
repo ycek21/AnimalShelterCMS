@@ -25,11 +25,15 @@ namespace RestApi.Controllers
         private readonly IAuthenticationManager _authManager;
         private IRepositoryManager _repository;
 
-        public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager)
+        private IAnimalTraitService _animalTraitService;
+
+        public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager, IAnimalTraitService animalTraitService)
         {
             _repository = repository;
             _mapper = mapper;
             _authManager = authManager;
+            _logger = logger;
+            _animalTraitService = animalTraitService;
         }
 
         [HttpGet, Authorize]
@@ -105,6 +109,14 @@ namespace RestApi.Controllers
             var animalToReturn = _mapper.Map<AnimalDto>(animal);
 
             return StatusCode(201, animalToReturn);
+        }
+
+        [HttpGet("traits"), Authorize]
+        public async Task<IActionResult> GetAnimalTraits()
+        {
+            var animalTraits = await _animalTraitService.GetAnimalTraits();
+
+            return Ok(animalTraits);
         }
     }
 }
