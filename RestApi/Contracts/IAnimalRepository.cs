@@ -9,7 +9,9 @@ namespace Contracts
 {
     public interface IAnimalRepository : IRepositoryBase<Animal>
     {
-        Task<PagedList<Animal>> GetAllAnimalsAsync(bool trackChanges, AnimalParameters animalParameters);
         Task<Animal> GetAnimalById(Guid AnimalId, bool trackChanges);
+        Task<PagedList<Animal>> GetAllAnimalsWithFilterAsync(bool trackChanges, AnimalParameters animalParameters);
+        void CreateAnimal(Animal animal);
+
     }
 }

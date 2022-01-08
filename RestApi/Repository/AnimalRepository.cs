@@ -17,14 +17,16 @@ namespace Repository
         {
         }
 
-        public async Task<PagedList<Animal>> GetAllAnimalsAsync(bool trackChanges, AnimalParameters animalParameters)
+        public async Task<PagedList<Animal>> GetAllAnimalsWithFilterAsync(bool trackChanges, AnimalParameters animalParameters)
         {
-            var animals = await FindAll(false).Include(a => a.Images.Where(i => i.IsProfilePicture == true))
+            var animals = await FindAll(trackChanges).Include(a => a.Images.Where(i => i.IsProfilePicture == true))
                 .Include(a => a.Size)
                 .Include(a => a.Color)
                 .Include(a => a.AnimalType)
                 .Where(a => a.IsDead == false)
-                .OrderBy(e => e.Name)
+                .Where(a => animalParameters.Color == null ? true : animalParameters.Color.Contains(a.Color.Value))
+                .Where(a => animalParameters.AnimalType == null ? true : animalParameters.AnimalType.Contains(a.AnimalType.Value))
+                .Where(a => animalParameters.Size == null ? true : animalParameters.Size.Contains(a.Size.Value))
                 .ToListAsync();
 
             return PagedList<Animal>.ToPagedList(animals, animalParameters.PageNumber, animalParameters.PageSize);
@@ -39,6 +41,11 @@ namespace Repository
             .Include(a => a.Color)
             .Include(a => a.AnimalType)
             .FirstOrDefaultAsync();
+        }
+
+        public void CreateAnimal(Animal animal)
+        {
+            Create(animal);
         }
     }
 }
