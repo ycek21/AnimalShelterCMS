@@ -42,5 +42,10 @@ namespace Repository
             .Include(a => a.AnimalType)
             .FirstOrDefaultAsync();
         }
+
+        public void CreateAnimal(Animal animal)
+        {
+            Create(animal);
+        }
     }
 }

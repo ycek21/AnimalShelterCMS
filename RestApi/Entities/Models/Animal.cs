@@ -42,6 +42,8 @@ namespace Entities.Models
         public Animal()
         {
             this.ModifiedAt = DateTime.Now;
+            this.Views = 0;
+            this.IsDead = false;
         }
 
     }

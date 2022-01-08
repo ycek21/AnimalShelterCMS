@@ -10,6 +10,7 @@ using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 
 namespace RestApi.Controllers
@@ -23,10 +24,6 @@ namespace RestApi.Controllers
         private readonly IMapper _mapper;
         private readonly IAuthenticationManager _authManager;
         private IRepositoryManager _repository;
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
         public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager)
         {
@@ -38,11 +35,6 @@ namespace RestApi.Controllers
         [HttpGet, Authorize]
         public async Task<IActionResult> GetAllAnimals([FromQuery] AnimalParameters animalParameters)
         {
-
-            if (!animalParameters.ValidAgeRange)
-            {
-                return BadRequest("Max age can't be less than min age");
-            }
 
             try
             {
@@ -64,7 +56,7 @@ namespace RestApi.Controllers
             }
         }
 
-        [HttpGet("{animalId}"), Authorize]
+        [HttpGet("{animalId}", Name = "GetAnimalById"), Authorize]
         public async Task<IActionResult> GetAnimalById(Guid animalId)
         {
             var animal = await _repository.Animal.GetAnimalById(animalId, false);
@@ -77,6 +69,42 @@ namespace RestApi.Controllers
             var animalDto = _mapper.Map<AnimalDto>(animal);
 
             return Ok(animalDto);
+        }
+
+        [HttpPost, Authorize]
+        public async Task<IActionResult> PostAnAnimal([FromBody] AnimalForCreationDto animalForCreation)
+        {
+            if (animalForCreation == null)
+            {
+                return BadRequest("animalForCreation object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+
+            var userId = "";
+            try
+            {
+                var token = Request.Headers[HeaderNames.Authorization].ToString().Remove(0, 7);
+                var email = _authManager.GetUserEmail(token);
+                userId = await _authManager.GetUserId(email);
+            }
+            catch (System.Exception)
+            {
+                BadRequest(new { message = "Wrong payload" });
+            }
+
+            var animal = _mapper.Map<Animal>(animalForCreation);
+            animal.ModifiedBy = userId;
+
+            _repository.Animal.Create(animal);
+            await _repository.SaveAsync();
+
+            var animalToReturn = _mapper.Map<AnimalDto>(animal);
+
+            return StatusCode(201, animalToReturn);
         }
     }
 }

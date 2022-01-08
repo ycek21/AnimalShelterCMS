@@ -11,5 +11,7 @@ namespace Contracts
     {
         Task<Animal> GetAnimalById(Guid AnimalId, bool trackChanges);
         Task<PagedList<Animal>> GetAllAnimalsWithFilterAsync(bool trackChanges, AnimalParameters animalParameters);
+        void CreateAnimal(Animal animal);
+
     }
 }

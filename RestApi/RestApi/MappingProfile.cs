@@ -40,7 +40,8 @@ namespace RestApi
                 opt => opt.MapFrom(src => src.AnimalType.Value));
 
             CreateMap<Walk, WalkForAnimalGet>();
+            CreateMap<Size, Animal>();
+            CreateMap<AnimalForCreationDto, Animal>();
         }
-
     }
 }

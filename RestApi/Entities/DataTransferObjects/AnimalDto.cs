@@ -20,6 +20,7 @@ namespace Entities.DataTransferObjects
         public int Views { get; set; }
         public bool IsDead { get; set; }
         public DateTime ModifiedAt { get; set; }
+        public string ModifiedBy { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
         public string AnimalType { get; set; }
