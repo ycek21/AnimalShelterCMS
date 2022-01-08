@@ -8,6 +8,7 @@
   grid-template-columns: repeat(auto-fit, minmax(12rem, 0.3fr));
   grid-auto-rows: 12rem;
   grid-gap: 0.5rem;
+  margin-top: 1%;
 }
 .gallery__group {
   position: relative;
@@ -58,4 +59,15 @@
   background-color: red;
   color: white;
   text-align: center;
+}
+.filters__wrapper {
+  display: flex;
+  justify-content: center;
+}
+.filters__style {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5%;
 }

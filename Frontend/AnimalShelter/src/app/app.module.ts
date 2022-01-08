@@ -14,6 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TimestampToDatePipe } from './shared/pipes/timestamp-to-date.pipe';
 import { AuthInterceptor } from './modules/user/interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -28,6 +29,7 @@ import { DatePipe } from '@angular/common';
     MatListModule,
     AppRoutingModule,
     HttpClientModule,
+    FlexLayoutModule,
   ],
   providers: [
     TimestampToDatePipe,
