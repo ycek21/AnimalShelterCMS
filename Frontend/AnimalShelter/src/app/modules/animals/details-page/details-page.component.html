@@ -2,12 +2,50 @@
   <div class="photo_wrapper">
     <img class="photo__img" src="{{ profileUrl.url }}" />
   </div>
+  <div class="empty_space"></div>
   <div class="text__wrapper">
-    <div class="text__wrapper-title">
-      <h2>{{ animal.name }}</h2>
+    <div class="text__wrapper-header">
+      <div class="text_wrapper-title">
+        <h1 style="font-family: Montserrat">
+          {{ animal.name }}
+        </h1>
+      </div>
+      <div class="divider"></div>
+      <span class="text__wrapper-date">
+        <h2 style="font-family: Montserrat">
+          {{ animal.dateOfBirth | date: "dd/MM/yyyy" }}
+        </h2>
+      </span>
     </div>
+    <div class="text_wrapper-attributes">
+      <h3 class="text_wrapper-attributes-style">
+        Character : {{ animal.character }}
+      </h3>
+      <h3 class="text_wrapper-attributes-style">
+        Weight : {{ animal.weight }}
+      </h3>
+      <h3 class="text_wrapper-attributes-style">
+        Walk limit : {{ animal.walkLimit }}
+      </h3>
+      <h3 class="text_wrapper-attributes-style">Size : {{ animal.size }}</h3>
+      <h3 class="text_wrapper-attributes-style">Color : {{ animal.color }}</h3>
+      <h3 class="text_wrapper-attributes-style">
+        Sex : {{ transform(animal.sex) }}
+      </h3>
+    </div>
+    <h2 style="margin-left: 5%; font-family: Montserrat">Description</h2>
     <div class="text__wrapper-desc">
       {{ animal.description }}
     </div>
+  </div>
+  <div class="gallery">
+    <ng-container *ngFor="let data of animal.images">
+      <div class="gallery__group">
+        <img class="gallery__img" src="{{ data.url }}" />
+        <!-- <div class="gallery__text">
+          <span class="gallery__text-desc">{{ data.name }}</span>
+        </div> -->
+      </div>
+    </ng-container>
   </div>
 </div>

@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TimestampToDatePipe } from './shared/pipes/timestamp-to-date.pipe';
 import { AuthInterceptor } from './modules/user/interceptors/auth.interceptor';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -35,6 +36,7 @@ import { AuthInterceptor } from './modules/user/interceptors/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

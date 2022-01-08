@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { AnimalsService } from './../services/animals.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -24,12 +25,17 @@ export class DetailsPageComponent implements OnInit {
 
   getAnimal(id: string) {
     this.animalsService.getAnimal(id).subscribe((resp) => {
-      console.log(resp);
       this.animal = resp;
       this.profileUrl = this.animal.images.find(
         (i) => i.isProfilePicture === true
       );
-      console.log(this.profileUrl);
     });
+  }
+  transform(sex: boolean) {
+    if (sex) {
+      return 'Male';
+    } else {
+      return 'Female';
+    }
   }
 }

@@ -51,10 +51,10 @@ export class NavigationComponent implements OnInit {
               this.subTitle = 'Animals';
               break;
             }
-            // case event.url.match('/animals/')?.input: {
-            //   this.subHeader = false;
-            //   break;
-            // }
+            case event.url.match('/animals/')?.input: {
+              this.subTitle = 'Animals';
+              break;
+            }
           }
         }
       });
