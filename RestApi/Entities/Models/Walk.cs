@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace Entities.Models
 {
@@ -14,7 +15,9 @@ namespace Entities.Models
         [ForeignKey("User")]
         public string UserId { get; set; }
 
+        [IgnoreDataMember]
         public Animal Animal { get; set; }
+        [IgnoreDataMember]
         public User User { get; set; }
     }
 }

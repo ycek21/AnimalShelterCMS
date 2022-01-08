@@ -10,8 +10,6 @@ namespace Entities.Models
 
         [MaxLength(60)]
         public string Value { get; set; }
-
-
         public ICollection<Animal> Animals { get; set; }
     }
 }
