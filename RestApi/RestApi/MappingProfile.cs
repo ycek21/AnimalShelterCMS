@@ -41,6 +41,7 @@ namespace RestApi
             CreateMap<Size, SizeDto>();
             CreateMap<Color, ColorDto>();
             CreateMap<AnimalType, AnimalTypeDto>();
+            CreateMap<ImageForCreation, Image>();
         }
     }
 }

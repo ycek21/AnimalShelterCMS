@@ -127,13 +127,54 @@ namespace RestApi.Controllers
             [ModelBinder(typeof(JsonWithFilesFormDataModelBinder))][FromForm] AnimalForCreationDto animalForCreation,
             [FromForm] List<IFormFile> files)
         {
-            files.ForEach(file =>
+            if (animalForCreation == null)
             {
-                _photoService.UploadPhoto(file);
-            });
+                return BadRequest("animalForCreation object is null");
+            }
+
+            if (files.Count == 0)
+            {
+                return BadRequest("Animal needs to have at least one photo.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+
+            var userId = "";
+
+            try
+            {
+                var token = Request.Headers[HeaderNames.Authorization].ToString().Remove(0, 7);
+                var email = _authManager.GetUserEmail(token);
+                userId = await _authManager.GetUserId(email);
+            }
+            catch (System.Exception)
+            {
+                BadRequest(new { message = "Wrong payload" });
+            }
+
+            var animal = _mapper.Map<Animal>(animalForCreation);
+            animal.ModifiedBy = userId;
+
+            _repository.Animal.Create(animal);
+            var animalToReturn = _mapper.Map<AnimalDto>(animal);
+
+            for (int i = 0; i < files.Count; i++)
+            {
+                var filePath = _photoService.UploadPhoto(files[i]);
+                var isProfilePicture = i == 0 ? true : false;
+                ImageForCreation imageForCreation = new ImageForCreation(filePath, isProfilePicture, animalToReturn.Id);
+                var image = _mapper.Map<Image>(imageForCreation);
+
+                _repository.Image.CreateImage(image);
+            }
+
+            await _repository.SaveAsync();
 
 
-            return Ok();
+            return StatusCode(201, animalToReturn);
         }
     }
 }
