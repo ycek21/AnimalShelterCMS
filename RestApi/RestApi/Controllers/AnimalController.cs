@@ -8,10 +8,12 @@ using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
+using RestApi.Utility;
 
 namespace RestApi.Controllers
 {
@@ -24,16 +26,17 @@ namespace RestApi.Controllers
         private readonly IMapper _mapper;
         private readonly IAuthenticationManager _authManager;
         private IRepositoryManager _repository;
-
         private IAnimalTraitService _animalTraitService;
+        private IPhotoService _photoService;
 
-        public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager, IAnimalTraitService animalTraitService)
+        public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager, IAnimalTraitService animalTraitService, IPhotoService photoService)
         {
             _repository = repository;
             _mapper = mapper;
             _authManager = authManager;
             _logger = logger;
             _animalTraitService = animalTraitService;
+            _photoService = photoService;
         }
 
         [HttpGet, Authorize]
@@ -117,6 +120,61 @@ namespace RestApi.Controllers
             var animalTraits = await _animalTraitService.GetAnimalTraits();
 
             return Ok(animalTraits);
+        }
+
+        [HttpPost("animalWithPhoto"), Authorize, DisableRequestSizeLimit]
+        public async Task<IActionResult> PostAnimalWithPhotos(
+            [ModelBinder(typeof(JsonWithFilesFormDataModelBinder))][FromForm] AnimalForCreationDto animalForCreation,
+            [FromForm] List<IFormFile> files)
+        {
+            if (animalForCreation == null)
+            {
+                return BadRequest("animalForCreation object is null");
+            }
+
+            if (files.Count == 0)
+            {
+                return BadRequest("Animal needs to have at least one photo.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+
+            var userId = "";
+
+            try
+            {
+                var token = Request.Headers[HeaderNames.Authorization].ToString().Remove(0, 7);
+                var email = _authManager.GetUserEmail(token);
+                userId = await _authManager.GetUserId(email);
+            }
+            catch (System.Exception)
+            {
+                BadRequest(new { message = "Wrong payload" });
+            }
+
+            var animal = _mapper.Map<Animal>(animalForCreation);
+            animal.ModifiedBy = userId;
+
+            _repository.Animal.Create(animal);
+            var animalToReturn = _mapper.Map<AnimalDto>(animal);
+
+            for (int i = 0; i < files.Count; i++)
+            {
+                var filePath = _photoService.UploadPhoto(files[i]);
+                var isProfilePicture = i == 0 ? true : false;
+                ImageForCreation imageForCreation = new ImageForCreation(filePath, isProfilePicture, animalToReturn.Id);
+                var image = _mapper.Map<Image>(imageForCreation);
+
+                _repository.Image.CreateImage(image);
+            }
+
+            await _repository.SaveAsync();
+
+
+            return StatusCode(201, animalToReturn);
         }
     }
 }

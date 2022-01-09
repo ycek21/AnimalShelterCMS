@@ -5,11 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contracts;
 using Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
@@ -36,11 +39,18 @@ namespace RestApi
             services.ConfigureLoggerService();
             services.ConfigureRepositoryManager();
             services.AddAuthentication();
+            services.AddAuthorization(options =>
+                {
+                    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+                });
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
             services.ConfigureAnimalTraitService();
+            services.ConfigurePhotoService();
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
@@ -62,7 +72,7 @@ namespace RestApi
             app.ConfigureExceptionHandler(logger);
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
             app.UseCors("CorsPolicy");
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
@@ -70,9 +80,14 @@ namespace RestApi
             });
 
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
 
             app.UseEndpoints(endpoints =>
             {
