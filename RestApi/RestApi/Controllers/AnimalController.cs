@@ -8,10 +8,12 @@ using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
+using RestApi.Utility;
 
 namespace RestApi.Controllers
 {
@@ -24,16 +26,17 @@ namespace RestApi.Controllers
         private readonly IMapper _mapper;
         private readonly IAuthenticationManager _authManager;
         private IRepositoryManager _repository;
-
         private IAnimalTraitService _animalTraitService;
+        private IPhotoService _photoService;
 
-        public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager, IAnimalTraitService animalTraitService)
+        public AnimalController(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager, IAnimalTraitService animalTraitService, IPhotoService photoService)
         {
             _repository = repository;
             _mapper = mapper;
             _authManager = authManager;
             _logger = logger;
             _animalTraitService = animalTraitService;
+            _photoService = photoService;
         }
 
         [HttpGet, Authorize]
@@ -117,6 +120,20 @@ namespace RestApi.Controllers
             var animalTraits = await _animalTraitService.GetAnimalTraits();
 
             return Ok(animalTraits);
+        }
+
+        [HttpPost("animalWithPhoto"), Authorize, DisableRequestSizeLimit]
+        public async Task<IActionResult> PostAnimalWithPhotos(
+            [ModelBinder(typeof(JsonWithFilesFormDataModelBinder))][FromForm] AnimalForCreationDto animalForCreation,
+            [FromForm] List<IFormFile> files)
+        {
+            files.ForEach(file =>
+            {
+                _photoService.UploadPhoto(file);
+            });
+
+
+            return Ok();
         }
     }
 }

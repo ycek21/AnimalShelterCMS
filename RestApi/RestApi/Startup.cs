@@ -41,6 +41,7 @@ namespace RestApi
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
             services.ConfigureAnimalTraitService();
+            services.ConfigurePhotoService();
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
