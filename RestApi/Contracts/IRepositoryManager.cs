@@ -9,7 +9,10 @@ namespace Contracts
     {
         IUserRepository User { get; }
         IAnimalRepository Animal { get; }
-
+        IColorRepository Color { get; }
+        IAnimalTypeRepository AnimalType { get; }
+        ISizeRepository Size { get; }
+        IImageRepository Image { get; }
         void Save();
         Task SaveAsync();
     }

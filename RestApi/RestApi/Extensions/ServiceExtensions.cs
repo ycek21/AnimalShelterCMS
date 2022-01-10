@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Contracts;
 using Entities;
 using Entities.Models;
@@ -14,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
+using Service;
 
 namespace Extensions
 {
@@ -82,7 +79,11 @@ namespace Extensions
             });
         }
 
+        public static void ConfigureAnimalTraitService(this IServiceCollection services) =>
+                services.AddScoped<IAnimalTraitService, AnimalTraitService>();
 
+        public static void ConfigurePhotoService(this IServiceCollection services) =>
+               services.AddScoped<IPhotoService, PhotoService>();
 
     }
 }

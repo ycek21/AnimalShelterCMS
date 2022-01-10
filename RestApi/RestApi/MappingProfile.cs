@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Entities.DataTransferObjects;
 using Entities.Models;
@@ -42,6 +38,10 @@ namespace RestApi
             CreateMap<Walk, WalkForAnimalGet>();
             CreateMap<Size, Animal>();
             CreateMap<AnimalForCreationDto, Animal>();
+            CreateMap<Size, SizeDto>();
+            CreateMap<Color, ColorDto>();
+            CreateMap<AnimalType, AnimalTypeDto>();
+            CreateMap<ImageForCreation, Image>();
         }
     }
 }
