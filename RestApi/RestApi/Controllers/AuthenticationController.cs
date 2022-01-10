@@ -3,6 +3,7 @@ using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +27,7 @@ namespace RestApi.Controllers
             _authManager = authManager;
         }
 
-        [HttpPost("register")]
+        [HttpPost("register"), AllowAnonymous]
         public async Task<IActionResult> RegisterUser([FromBody] UserForCreationDto userForCreation)
         {
             var user = _mapper.Map<User>(userForCreation);
@@ -46,7 +47,7 @@ namespace RestApi.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost("login")]
+        [HttpPost("login"), AllowAnonymous]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
         {
             if (!await _authManager.ValidateUser(user))
