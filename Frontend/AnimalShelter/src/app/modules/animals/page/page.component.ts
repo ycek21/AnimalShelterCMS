@@ -1,9 +1,12 @@
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AnimalsService } from './../services/animals.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Animal } from '../models/animal';
 import { MatPaginator } from '@angular/material/paginator';
-import { catchError, map, merge, startWith, switchMap } from 'rxjs';
+import { catchError, filter, map, merge, startWith, switchMap } from 'rxjs';
+import { Types } from '../models/type';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Traits } from '../models/traits';
 
 @Component({
   selector: 'app-page',
@@ -13,15 +16,28 @@ import { catchError, map, merge, startWith, switchMap } from 'rxjs';
 export class PageComponent implements OnInit, AfterViewInit {
   dataSource: Animal[] = [];
   resultLength = 0;
+  filterForm: FormGroup = this.fb.group({
+    size: [''],
+    color: [''],
+    animalType: [''],
+  });
+  filters: Traits;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private animalsService: AnimalsService, private router: Router) {}
+  constructor(
+    private animalsService: AnimalsService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTraits();
+    this.checkUrl();
+  }
 
   ngAfterViewInit() {
-    merge(this.paginator.page)
+    merge(this.paginator.page, this.filterForm.valueChanges)
       .pipe(
         startWith({}),
         switchMap(() => {
@@ -51,9 +67,33 @@ export class PageComponent implements OnInit, AfterViewInit {
   }
 
   getAnimals(pageIndex: number, pageSize: number) {
-    return this.animalsService.getAnimals(pageIndex, pageSize);
+    return this.animalsService.getAnimals(pageIndex, pageSize, this.filterForm);
   }
   goToAnimal(id: string) {
     this.router.navigate([`animals/${id}`]);
+  }
+  clearFilter() {
+    this.filterForm.reset({
+      size: '',
+      color: '',
+      animalType: '',
+    });
+  }
+  getTraits() {
+    this.animalsService.getTraits().subscribe((resp) => {
+      this.filters = resp;
+    });
+  }
+  checkUrl() {
+    let url = this.router.url.split('/').pop();
+    if (url === 'dogs') {
+      this.filterForm.patchValue({
+        animalType: 'Pies',
+      });
+    } else if (url === 'cats') {
+      this.filterForm.patchValue({
+        animalType: 'Kot',
+      });
+    }
   }
 }

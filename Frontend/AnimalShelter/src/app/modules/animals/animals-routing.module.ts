@@ -9,6 +9,14 @@ const routes: Routes = [
     component: PageComponent,
   },
   {
+    path: 'dogs',
+    component: PageComponent,
+  },
+  {
+    path: 'cats',
+    component: PageComponent,
+  },
+  {
     path: ':id',
     component: DetailsPageComponent,
   },

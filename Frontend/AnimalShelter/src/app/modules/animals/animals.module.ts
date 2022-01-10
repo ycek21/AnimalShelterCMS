@@ -6,6 +6,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -14,6 +16,8 @@ import { MatCardModule } from '@angular/material/card';
     MatPaginatorModule,
     MatSelectModule,
     MatCardModule,
+    ReactiveFormsModule,
+    MatButtonModule,
   ],
   declarations: [PageComponent, DetailsPageComponent],
 })
