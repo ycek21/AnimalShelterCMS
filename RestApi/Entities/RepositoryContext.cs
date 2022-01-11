@@ -93,7 +93,6 @@ namespace Entities
         public DbSet<Walk> Walks { get; set; }
         public DbSet<AdoptionApplication> AdoptionApplications { get; set; }
         public DbSet<Config> Configs { get; set; }
-        // public DbSet<User> Users { get; set; }
         public DbSet<Donation> Donations { get; set; }
         public DbSet<Fundraiser> Fundraisers { get; set; }
     }
