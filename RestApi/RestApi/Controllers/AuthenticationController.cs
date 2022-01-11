@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
@@ -6,7 +7,6 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace RestApi.Controllers
 {
@@ -30,6 +30,11 @@ namespace RestApi.Controllers
         [HttpPost("register"), AllowAnonymous]
         public async Task<IActionResult> RegisterUser([FromBody] UserForCreationDto userForCreation)
         {
+            if (userForCreation.Roles.Count != 1)
+            {
+                return StatusCode(422);
+            }
+
             var user = _mapper.Map<User>(userForCreation);
 
             var result = await _userManager.CreateAsync(user, userForCreation.Password);

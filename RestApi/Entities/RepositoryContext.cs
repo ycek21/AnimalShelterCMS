@@ -11,8 +11,6 @@ namespace Entities
             : base(options)
         {
         }
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -80,11 +78,10 @@ namespace Entities
             modelBuilder.ApplyConfiguration(new SizeConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new AnimalTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new AspNetUserRolesConfiguration());
         }
-
-
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Color> Colors { get; set; }
