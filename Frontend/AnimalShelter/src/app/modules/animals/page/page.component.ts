@@ -54,6 +54,7 @@ export class PageComponent implements OnInit, AfterViewInit {
         })
       )
       .subscribe((data) => {
+        console.log(data);
         let xpagination: {
           TotalPages: number;
           PageSize: number;
@@ -61,6 +62,7 @@ export class PageComponent implements OnInit, AfterViewInit {
           HasPrevious: boolean;
           HasNext: boolean;
         } = JSON.parse(data.headers.get('X-Pagination'));
+        console.log(xpagination);
         this.resultLength = xpagination.TotalCount;
         this.dataSource = data.body;
       });
@@ -96,4 +98,7 @@ export class PageComponent implements OnInit, AfterViewInit {
       });
     }
   }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:5001/${serverPath}`;
+  };
 }

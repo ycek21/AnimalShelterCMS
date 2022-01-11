@@ -45,7 +45,7 @@
 <div class="gallery">
   <ng-container *ngFor="let data of dataSource">
     <div class="gallery__group" (click)="goToAnimal(data.id)">
-      <img class="gallery__img" src="{{ data.images[0].url }}" />
+      <img class="gallery__img" [src]="createImgPath(data.images[0].url)" />
       <div class="gallery__text">
         <span class="gallery__text-desc">{{ data.name }}</span>
       </div>

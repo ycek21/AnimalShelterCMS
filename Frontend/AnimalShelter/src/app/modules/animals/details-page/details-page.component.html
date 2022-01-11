@@ -1,6 +1,6 @@
 <div class="grid-container">
   <div class="photo_wrapper">
-    <img class="photo__img" src="{{ profileUrl.url }}" />
+    <img class="photo__img" [src]="createImgPath(profileUrl.url)" />
   </div>
   <div class="empty_space"></div>
   <div class="text__wrapper">
@@ -41,10 +41,7 @@
   <div class="gallery">
     <ng-container *ngFor="let data of animal.images">
       <div class="gallery__group">
-        <img class="gallery__img" src="{{ data.url }}" />
-        <!-- <div class="gallery__text">
-          <span class="gallery__text-desc">{{ data.name }}</span>
-        </div> -->
+        <img class="gallery__img" [src]="createImgPath(data.url)" />
       </div>
     </ng-container>
   </div>

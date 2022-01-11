@@ -46,10 +46,14 @@ export class FormComponent implements OnInit {
     this.authService.login(credentials).subscribe(
       (response: HttpResponse<string>) => {
         const token = response.body!['token'];
-        console.log(response.body!['token']);
         if (token) {
           const decodedToken: DecodedToken = jwt_decode(token);
+          const userEmail =
+            decodedToken[
+              'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+            ];
           localStorage.setItem('userToken', token);
+          localStorage.setItem('userEmail', userEmail);
           this.authService.setLogged(true);
           this.router.navigate(['home']);
         }

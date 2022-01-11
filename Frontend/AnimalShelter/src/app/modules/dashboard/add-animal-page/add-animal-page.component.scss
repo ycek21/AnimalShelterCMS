@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.row {
+  display: flex;
+}
+.example-full-width {
+  width: 100%;
+}
+.imagePreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8%;
+}
+img {
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+}
+.inputButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}

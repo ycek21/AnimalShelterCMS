@@ -39,12 +39,12 @@ namespace RestApi
             services.ConfigureLoggerService();
             services.ConfigureRepositoryManager();
             services.AddAuthentication();
-            services.AddAuthorization(options =>
-                {
-                    options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                        .RequireAuthenticatedUser()
-                        .Build();
-                });
+            // services.AddAuthorization(options =>
+            //     {
+            //         options.FallbackPolicy = new AuthorizationPolicyBuilder()
+            //             .RequireAuthenticatedUser()
+            //             .Build();
+            //     });
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
             services.AddAutoMapper(typeof(Startup));
