@@ -32,7 +32,7 @@ namespace RestApi.Controllers
             _userManager = userManager;
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _repository.User.GetUserAsync(id, trackChanges: false);
@@ -87,9 +87,13 @@ namespace RestApi.Controllers
             }
 
             var userRoles = await _userManager.GetRolesAsync(lookedForUser);
-            var roleToDelete = userRoles[0] == "CommonUser" ? "COMMON" : "ADMIN";
+            if (userRoles.Count > 0)
+            {
+                var roleToDelete = userRoles[0] == "CommonUser" ? "COMMON" : "ADMIN";
+                await _userManager.RemoveFromRoleAsync(lookedForUser, roleToDelete);
+            }
 
-            await _userManager.RemoveFromRoleAsync(lookedForUser, roleToDelete);
+
 
             await _userManager.AddToRoleAsync(lookedForUser, role.Role);
 
