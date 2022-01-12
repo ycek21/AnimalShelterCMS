@@ -34,4 +34,13 @@ export class AnimalsService {
     const url = ANIMALS_URL + '/traits';
     return this.http.get<Traits>(url);
   }
+  postAnimal(animalForm: FormGroup, files: File[]) {
+    const url = ANIMALS_URL + '/animalWithPhoto';
+    const formData = new FormData();
+    formData.append('animalForCreation', JSON.stringify(animalForm.value));
+    Array.from(files).map((file, index) => {
+      return formData.append('files', file);
+    });
+    return this.http.post(url, formData);
+  }
 }

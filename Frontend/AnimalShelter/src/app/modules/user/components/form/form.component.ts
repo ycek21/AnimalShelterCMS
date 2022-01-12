@@ -60,7 +60,7 @@ export class FormComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         if (error.status === 403) {
-          console.log('iSForbidded');
+          console.error('iSForbidded');
           this.loginForm.reset();
         }
       }
@@ -68,10 +68,7 @@ export class FormComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value);
-    this.authService.register(this.registerForm.value).subscribe((resp) => {
-      console.log(resp);
-    });
+    this.authService.register(this.registerForm.value).subscribe((resp) => {});
   }
   validatorPassword(fc: FormControl) {
     const value = fc.value as string;
