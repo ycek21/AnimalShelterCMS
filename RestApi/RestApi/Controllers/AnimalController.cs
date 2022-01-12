@@ -66,7 +66,7 @@ namespace RestApi.Controllers
         [HttpGet("{animalId}", Name = "GetAnimalById"), Authorize]
         public async Task<IActionResult> GetAnimalById(Guid animalId)
         {
-            var animal = await _repository.Animal.GetAnimalById(animalId, false);
+            var animal = await _repository.Animal.GetAnimalById(animalId, trackChanges: false);
 
             if (animal == null)
             {
@@ -76,6 +76,24 @@ namespace RestApi.Controllers
             var animalDto = _mapper.Map<AnimalDto>(animal);
 
             return Ok(animalDto);
+        }
+
+        [HttpPatch("{animalId}"), Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> PatchAnimalIsDead(Guid animalId)
+        {
+            var animal = await _repository.Animal.GetAnimalById(animalId, trackChanges: false);
+
+            if (animal == null)
+            {
+                return NotFound("Animal with such Id doesn't exist");
+            }
+
+            animal.IsDead = true;
+            _repository.Animal.Update(animal);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
         }
 
         [HttpPost, Authorize]
