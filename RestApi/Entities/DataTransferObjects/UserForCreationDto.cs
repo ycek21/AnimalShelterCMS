@@ -23,7 +23,7 @@ namespace Entities.DataTransferObjects
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
-        public ICollection<string> Roles { get; set; }
+        public List<string> Roles { get; set; }
 
         public UserForCreationDto()
         {
