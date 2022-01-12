@@ -8,6 +8,7 @@ using Entities.DataTransferObjects;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,11 +68,35 @@ namespace RestApi.Controllers
 
         }
 
-        // [HttpPatch]
-        // public async Task<IActionResult> ChangeUserRole(IdentityRole role)
-        // {
+        [HttpPatch("{Id}"), Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> PatchUserRole(string Id, [FromBody] RoleForPatchDto role)
+        {
+            if (role.Role == null || role.Role == "")
+            {
+                _logger.LogError("role object sent from client is null.");
+                return BadRequest("role object is null");
+            }
 
-        // }
+            var users = await _userManager.Users.ToListAsync();
+            var lookedForUser = users.Find(u => u.Id == Id);
+
+            if (lookedForUser == null)
+            {
+                _logger.LogError($"User with such Id doesn't exist.{Id}");
+                return BadRequest("User with such Id doesn't exist.");
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(lookedForUser);
+            var roleToDelete = userRoles[0] == "CommonUser" ? "COMMON" : "ADMIN";
+
+            await _userManager.RemoveFromRoleAsync(lookedForUser, roleToDelete);
+
+            await _userManager.AddToRoleAsync(lookedForUser, role.Role);
+
+            var newUserRole = await _userManager.GetRolesAsync(lookedForUser);
+
+            return NoContent();
+        }
 
     }
 }

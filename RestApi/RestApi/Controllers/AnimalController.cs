@@ -165,7 +165,7 @@ namespace RestApi.Controllers
             {
                 var filePath = _photoService.UploadPhoto(files[i]);
                 var isProfilePicture = i == 0 ? true : false;
-                ImageForCreation imageForCreation = new ImageForCreation(filePath, isProfilePicture, animalToReturn.Id);
+                ImageForCreationDto imageForCreation = new ImageForCreationDto(filePath, isProfilePicture, animalToReturn.Id);
                 var image = _mapper.Map<Image>(imageForCreation);
 
                 _repository.Image.CreateImage(image);
