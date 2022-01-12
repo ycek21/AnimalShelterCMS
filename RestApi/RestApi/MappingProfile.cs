@@ -13,6 +13,8 @@ namespace RestApi
                     dest.UserName,
                     opt => opt.MapFrom(src => src.Email));
 
+            CreateMap<User, UserDto>();
+
             CreateMap<Animal, AnimalForAnimalListDto>()
                 .ForMember(dest =>
                 dest.Size,
