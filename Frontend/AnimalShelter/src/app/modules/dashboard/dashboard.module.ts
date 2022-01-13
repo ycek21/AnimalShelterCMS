@@ -21,6 +21,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserPageComponent } from './page/user-page/user-page/user-page.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
@@ -53,6 +55,8 @@ import { MatTableModule } from '@angular/material/table';
     SidebarComponent,
     PageComponent,
     AddAnimalPageComponent,
+    UserPageComponent,
+    UserTableComponent,
     DeleteAnimalPageComponent,
   ],
 })

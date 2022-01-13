@@ -1,0 +1,64 @@
+<table mat-table [dataSource]="users" class="table">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name.</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="surname">
+    <th mat-header-cell *matHeaderCellDef>Surname</th>
+    <td mat-cell *matCellDef="let element">{{ element.surname }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateOfBirth">
+    <th mat-header-cell *matHeaderCellDef>Date Of Birth</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.dateOfBirth | date: "dd.MM.yyyy" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="roles">
+    <th mat-header-cell *matHeaderCellDef>Roles</th>
+    <td mat-cell *matCellDef="let element">{{ element.roles }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteUser(element)"
+        class="deleteButton"
+        [disabled]="element.email === userEmail"
+      >
+        Delete user
+      </button>
+      <button
+        mat-raised-button
+        color="basic"
+        *ngIf="element.roles.includes('Administrator')"
+        (click)="changeUserRole(element)"
+        [disabled]="element.email === userEmail"
+      >
+        Withdraw admin role
+      </button>
+      <button
+        mat-raised-button
+        color="basic"
+        *ngIf="element.roles.includes('CommonUser')"
+        (click)="changeUserRole(element)"
+        [disabled]="element.email === userEmail"
+      >
+        Grant admin role
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
