@@ -1,1 +1,14 @@
-<p>About page works!</p>
+<div class="container">
+  <div class="photo_wrapper">
+    <img class="photo__img" src="../../../../assets/about_us_photo.jpeg" />
+  </div>
+  <div class="info">
+    <div class="info__title__wrapper">
+      <div class="info__title__wrapper_style">Description</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngFor="let info of informations">
+      {{ info.key }}
+    </div>
+  </div>
+</div>

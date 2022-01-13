@@ -34,7 +34,7 @@ export class NavigationComponent implements OnInit {
               break;
             }
             case '/about': {
-              this.subTitle = 'About';
+              this.subTitle = 'About us';
               break;
             }
             case '/adoptions': {
