@@ -1,0 +1,255 @@
+<div class="container">
+  <form [formGroup]="animalForm">
+    <mat-card class="form-card">
+      <!-- <mat-card-header> -->
+      <div class="row">
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Name of animal</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              placeholder="Name"
+            />
+          </mat-form-field>
+          <div
+            class="container__formField--errors"
+            *ngIf="
+              animalForm.get('name')?.hasError('required') &&
+              animalForm.get('name')?.touched
+            "
+          >
+            This field is required
+          </div>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Date of animal birth</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="dateOfBirth"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div
+            class="container__formField--errors"
+            *ngIf="
+              animalForm.get('dateOfBirth')?.hasError('required') &&
+              animalForm.get('dateOfBirth')?.touched
+            "
+          >
+            This field is required
+          </div>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Sex</mat-label>
+            <mat-select formControlName="sex">
+              <mat-option value="false">Female</mat-option>
+              <mat-option value="true">Male</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div
+            class="container__formField--errors"
+            *ngIf="
+              animalForm.get('sex')?.hasError('required') &&
+              animalForm.get('sex')?.touched
+            "
+          >
+            This field is required
+          </div>
+        </div>
+      </div>
+      <!-- </mat-card-header> -->
+      <div class="inputButton">
+        <button mat-raised-button (click)="uploadFile()">
+          <mat-icon>file_upload</mat-icon>
+          Add animal photo
+        </button>
+      </div>
+      <!-- <div class="inputButton">
+        <input type="file" accept="image/*" (change)="selectFile($event)" />
+      </div> -->
+      <input
+        #fileUpload
+        type="file"
+        id="fileUpload"
+        accept="image/*"
+        style="display: none"
+      />
+      <mat-divider></mat-divider>
+      <div
+        class="imagePreview"
+        *ngIf="profilePhotoUrl && profilePhotoUrl !== ''"
+      >
+        <img mat-card-image [src]="profilePhotoUrl" />
+      </div>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="row">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <mat-label>Animal character</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="character"
+                placeholder="character"
+              />
+            </mat-form-field>
+            <div
+              class="container__formField--errors"
+              *ngIf="
+                animalForm.get('character')?.hasError('required') &&
+                animalForm.get('character')?.touched
+              "
+            >
+              This field is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <mat-label>Weight</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="weight"
+                placeholder="weight"
+              />
+            </mat-form-field>
+            <div
+              class="container__formField--errors"
+              *ngIf="
+                animalForm.get('weight')?.hasError('required') &&
+                animalForm.get('weight')?.touched
+              "
+            >
+              This field is required
+            </div>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <mat-label>Walk limit</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="walkLimit"
+                placeholder="Walk limit"
+              />
+            </mat-form-field>
+            <div
+              class="container__formField--errors"
+              *ngIf="
+                animalForm.get('walkLimit')?.hasError('required') &&
+                animalForm.get('walkLimit')?.touched
+              "
+            >
+              This field is required
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <mat-form-field class="filter__style-form">
+              <mat-label>Size</mat-label>
+              <mat-select formControlName="sizeId">
+                <mat-option
+                  *ngFor="let size of filters.sizes"
+                  [value]="size.id"
+                >
+                  {{ size.value }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="filter__style-form">
+              <mat-label>Color</mat-label>
+              <mat-select formControlName="colorId">
+                <mat-option
+                  *ngFor="let color of filters.colors"
+                  [value]="color.id"
+                >
+                  {{ color.value }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="filter__style-form">
+              <mat-label>Animal type</mat-label>
+              <mat-select formControlName="animalTypeId">
+                <mat-option
+                  *ngFor="let type of filters.animalTypes"
+                  [value]="type.id"
+                >
+                  {{ type.value }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="final-row">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <mat-label>Animal description</mat-label>
+              <textarea
+                matInput
+                formControlName="description"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"
+              ></textarea>
+            </mat-form-field>
+            <div
+              class="container__formField--errors"
+              *ngIf="
+                animalForm.get('description')?.hasError('required') &&
+                animalForm.get('description')?.touched
+              "
+            >
+              This field is required
+            </div>
+          </div>
+          <div *ngIf="addMoreImages" class="inputButton">
+            <button
+              mat-raised-button
+              class="photosUploadButton"
+              (click)="uploadFiles()"
+            >
+              <mat-icon>file_upload</mat-icon>
+              Add more animal photos
+            </button>
+          </div>
+          <input
+            #fileUpload
+            type="file"
+            id="fileUploads"
+            accept="image/*"
+            style="display: none"
+            multiple
+          />
+        </div>
+        <section class="container__actionButtonWrapper">
+          <button
+            mat-raised-button
+            [disabled]="animalForm.invalid"
+            (click)="addAnimal()"
+            type="submit"
+            class="container__actionButton--register"
+          >
+            Add animal
+          </button>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

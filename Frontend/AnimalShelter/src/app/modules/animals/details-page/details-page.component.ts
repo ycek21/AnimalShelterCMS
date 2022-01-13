@@ -38,4 +38,7 @@ export class DetailsPageComponent implements OnInit {
       return 'Female';
     }
   }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:5001/${serverPath}`;
+  };
 }

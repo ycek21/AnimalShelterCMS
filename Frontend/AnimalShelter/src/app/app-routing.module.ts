@@ -37,6 +37,13 @@ const routes: Routes = [
       import('./modules/animals/animals.module').then((m) => m.AnimalsModule),
   },
   {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

@@ -15,6 +15,9 @@ import { TimestampToDatePipe } from './shared/pipes/timestamp-to-date.pipe';
 import { AuthInterceptor } from './modules/user/interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -30,6 +33,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppRoutingModule,
     HttpClientModule,
     FlexLayoutModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
   ],
   providers: [
     TimestampToDatePipe,

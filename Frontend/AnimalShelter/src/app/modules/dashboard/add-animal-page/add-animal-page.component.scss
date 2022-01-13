@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+mat-card {
+  min-width: 600px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.example-full-width {
+}
+.imagePreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8%;
+}
+img {
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+}
+.inputButton {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+.container__formField--errors {
+  color: red;
+  font-size: small;
+}
+.container__actionButtonWrapper {
+  display: flex;
+  justify-content: center;
+}
+.container__actionButton--register {
+  margin-top: 2%;
+  width: 35%;
+  background-color: #26a450;
+  color: white;
+  font-family: "Montserrat";
+}
+.dateBirth {
+  margin-left: 10%;
+}
+.final-row {
+  display: flex;
+  justify-content: space-between;
+}
+.photosUploadButton {
+  color: white;
+  background-color: #26a450;
+}
