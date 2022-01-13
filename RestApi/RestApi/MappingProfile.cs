@@ -13,6 +13,8 @@ namespace RestApi
                     dest.UserName,
                     opt => opt.MapFrom(src => src.Email));
 
+            CreateMap<User, UserDto>();
+
             CreateMap<Animal, AnimalForAnimalListDto>()
                 .ForMember(dest =>
                 dest.Size,
@@ -35,13 +37,17 @@ namespace RestApi
                 dest.AnimalType,
                 opt => opt.MapFrom(src => src.AnimalType.Value));
 
-            CreateMap<Walk, WalkForAnimalGet>();
+            CreateMap<Walk, WalkForAnimalGetDto>();
             CreateMap<Size, Animal>();
             CreateMap<AnimalForCreationDto, Animal>();
             CreateMap<Size, SizeDto>();
             CreateMap<Color, ColorDto>();
             CreateMap<AnimalType, AnimalTypeDto>();
-            CreateMap<ImageForCreation, Image>();
+            CreateMap<ImageForCreationDto, Image>();
+            CreateMap<Config, ConfigDto>().ForMember(
+                dest => dest.ModifiedBy,
+                opt => opt.MapFrom(src => src.User.Email)
+            );
         }
     }
 }

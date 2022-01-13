@@ -16,6 +16,7 @@ namespace Repository
         private ISizeRepository _sizeRepository;
         private IAnimalTypeRepository _animalTypeRepository;
         private IImageRepository _imageRepository;
+        private IConfigRepository _configRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -77,6 +78,16 @@ namespace Repository
                 if (_imageRepository == null)
                     _imageRepository = new ImageRepository(_repositoryContext);
                 return _imageRepository;
+            }
+        }
+
+        public IConfigRepository Config
+        {
+            get
+            {
+                if (_configRepository == null)
+                    _configRepository = new ConfigRepository(_repositoryContext);
+                return _configRepository;
             }
         }
 

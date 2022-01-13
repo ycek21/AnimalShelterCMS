@@ -25,7 +25,7 @@ namespace Entities.DataTransferObjects
         public string Color { get; set; }
         public string AnimalType { get; set; }
         public ICollection<Image> Images { get; set; }
-        public ICollection<WalkForAnimalGet> Walks { get; set; }
+        public ICollection<WalkForAnimalGetDto> Walks { get; set; }
 
     }
 }

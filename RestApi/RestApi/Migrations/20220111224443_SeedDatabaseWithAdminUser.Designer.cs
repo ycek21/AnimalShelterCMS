@@ -4,14 +4,16 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace RestApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20220111224443_SeedDatabaseWithAdminUser")]
+    partial class SeedDatabaseWithAdminUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,12 +133,12 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4ee8142a-f6ec-4dbc-afc2-4dcb171501b1"),
+                            Id = new Guid("5c423d74-c6e0-4ad2-914a-4a368bb82439"),
                             Value = "Pies"
                         },
                         new
                         {
-                            Id = new Guid("83a61c03-860b-4eee-92d0-7c1c404ab6f0"),
+                            Id = new Guid("fd4c03ae-1127-4575-a9e6-392867e17651"),
                             Value = "Kot"
                         });
                 });
@@ -159,62 +161,62 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1a4a6e1e-e808-4cca-8590-decafb8b81c2"),
+                            Id = new Guid("6323691a-a06c-45c4-9a04-faf4e0c27a2c"),
                             Value = "Czarny"
                         },
                         new
                         {
-                            Id = new Guid("933cae15-859b-45a5-876c-35236fbaa972"),
+                            Id = new Guid("6002645c-af53-46e0-aab0-35e31c98bc94"),
                             Value = "Biały"
                         },
                         new
                         {
-                            Id = new Guid("710b6b11-8334-40af-a25e-c1bfafafebb4"),
+                            Id = new Guid("1cf89ef6-2113-4eb3-9b6d-9dc5336d6bb2"),
                             Value = "Mieszany"
                         },
                         new
                         {
-                            Id = new Guid("4d03beaa-9499-4b87-ab40-e87e3c073a14"),
+                            Id = new Guid("839a2701-827e-45f0-b79a-14f929b18d05"),
                             Value = "Rudy"
                         },
                         new
                         {
-                            Id = new Guid("f0b766e8-c016-4cf3-a50f-16ee6ba457f6"),
+                            Id = new Guid("94a6397a-d86c-4bba-839d-6cfffbf384d7"),
                             Value = "Tricolor"
                         },
                         new
                         {
-                            Id = new Guid("eb579ec1-99e4-4846-a1f9-96d78f0b51e0"),
+                            Id = new Guid("b6a3eab5-1138-4ea3-82eb-53d053f90284"),
                             Value = "Niebieski"
                         },
                         new
                         {
-                            Id = new Guid("1e6f20a3-277e-47d7-b126-11d2cd9f4ebd"),
+                            Id = new Guid("b373a6f8-2da4-4591-b409-94623c8ce3df"),
                             Value = "Pstrokaty"
                         },
                         new
                         {
-                            Id = new Guid("e2956862-d837-4b35-a214-254eb5d99e44"),
+                            Id = new Guid("f07d20da-16a6-4a3b-b6f6-82a77eb50bf4"),
                             Value = "Podpalane"
                         },
                         new
                         {
-                            Id = new Guid("c59b5188-160c-4d26-aabd-999c532d741c"),
+                            Id = new Guid("1922d82a-251a-4d77-b6ef-71b2baef261d"),
                             Value = "Marengo"
                         },
                         new
                         {
-                            Id = new Guid("62b6d38e-efaa-4a4f-8c30-f13c278ae2c4"),
+                            Id = new Guid("14a8c425-a385-4c70-b720-9f13b83c0f91"),
                             Value = "Śniady"
                         },
                         new
                         {
-                            Id = new Guid("320dc267-b9de-45eb-8bcb-19d98ff87d3b"),
+                            Id = new Guid("89bbf56f-45ce-4e5f-9d6b-c10dc2765ac3"),
                             Value = "Wilczy"
                         },
                         new
                         {
-                            Id = new Guid("cc11052c-668f-4da0-8633-7fea328b7a9c"),
+                            Id = new Guid("18aa8e55-24c6-4df7-b9e6-a239b14244fd"),
                             Value = "Dzicze"
                         });
                 });
@@ -239,64 +241,6 @@ namespace RestApi.Migrations
                     b.HasIndex("ModifiedBy");
 
                     b.ToTable("Configs");
-
-                    b.HasData(
-                        new
-                        {
-                            Key = "Miasto",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(1302),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "Ulica",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2495),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "NumerDomu",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2510),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "KodPocztowy",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2513),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "NumerKonta",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2515),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "Opis",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2518),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "Nazwa",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2520),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        },
-                        new
-                        {
-                            Key = "Kraj",
-                            ModifiedAt = new DateTime(2022, 1, 13, 10, 51, 37, 279, DateTimeKind.Local).AddTicks(2522),
-                            ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
-                            Value = ""
-                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Donation", b =>
@@ -401,27 +345,27 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("666d8018-7f0d-449c-bf3e-dd6dc71aaee8"),
+                            Id = new Guid("58d0ef32-dc58-4d28-9c63-98529ad64629"),
                             Value = "Bardzo mały"
                         },
                         new
                         {
-                            Id = new Guid("2534e8a9-ed02-4c29-abd4-96b0fb56e6f9"),
+                            Id = new Guid("60543661-6608-4f47-8183-204c0576e4a7"),
                             Value = "Mały"
                         },
                         new
                         {
-                            Id = new Guid("78ecba47-0071-4f90-af15-9ecd3604bbd7"),
+                            Id = new Guid("2765008c-121e-410b-a855-8f2e484cfd34"),
                             Value = "Duży"
                         },
                         new
                         {
-                            Id = new Guid("987f67ed-daa3-434b-87bd-975aae0d7c93"),
+                            Id = new Guid("7be284a7-3bcf-4d9e-8b74-3727da58e468"),
                             Value = "Średni"
                         },
                         new
                         {
-                            Id = new Guid("244843bc-9cbe-440b-a185-565c421b11ee"),
+                            Id = new Guid("b1c86f5b-1c27-48e2-bb1d-2147e187d6c5"),
                             Value = "Bardzo duży"
                         });
                 });
@@ -510,20 +454,20 @@ namespace RestApi.Migrations
                         {
                             Id = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "220302f4-4c79-414e-bb88-6e694007be06",
+                            ConcurrencyStamp = "44a04810-87c6-490c-90ec-770139dae46a",
                             DateOfBirth = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin.animalshelter@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Admin",
                             NormalizedEmail = "ADMIN.ANIMALSHELTER@GMAIL.COM",
-                            NormalizedUserName = "ADMIN.ANIMALSHELTER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA9OcDh2To8ueTjp/s7BtBn6y1aZ+fISwmM1J7kGQi65rfzJ/t+szovGJrrUcDfc5w==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKl+aeMWVgqBVWMf1OWm3rXvOrh7I9Sh2UyaCo34rb5SoD2w+/UXJSQDOJoGcLi2KA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c7ed3f79-d101-47c7-90b0-3292dd6fbc1c",
+                            SecurityStamp = "c4a24e90-07d9-42fe-b015-fdbe6317247f",
                             Surname = "Admin",
                             TwoFactorEnabled = false,
-                            UserName = "admin.animalshelter@gmail.com"
+                            UserName = "admin"
                         });
                 });
 
@@ -585,14 +529,14 @@ namespace RestApi.Migrations
                         new
                         {
                             Id = "0a747698-be88-4c59-93d4-3bbccdf43dfc",
-                            ConcurrencyStamp = "e888250e-827a-4574-ac0c-a17eb90eedcd",
+                            ConcurrencyStamp = "89bc3813-98e5-45e7-a291-b07746ab8d67",
                             Name = "CommonUser",
                             NormalizedName = "COMMON"
                         },
                         new
                         {
                             Id = "e643aedc-b67e-4ad2-9d84-7019ee5f4f21",
-                            ConcurrencyStamp = "c0a5e059-1279-4ca3-801d-57d372c354f6",
+                            ConcurrencyStamp = "47aa02c6-c3ef-419c-a9ea-b53ee5060ddb",
                             Name = "Administrator",
                             NormalizedName = "ADMIN"
                         });

@@ -13,6 +13,7 @@ namespace Contracts
         IAnimalTypeRepository AnimalType { get; }
         ISizeRepository Size { get; }
         IImageRepository Image { get; }
+        IConfigRepository Config { get; }
         void Save();
         Task SaveAsync();
     }

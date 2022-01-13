@@ -2,7 +2,7 @@ using System;
 
 namespace Entities.DataTransferObjects
 {
-    public class WalkForAnimalGet
+    public class WalkForAnimalGetDto
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
