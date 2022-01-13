@@ -61,7 +61,7 @@ export class PageComponent implements OnInit, AfterViewInit {
           HasPrevious: boolean;
           HasNext: boolean;
         } = JSON.parse(data.headers.get('X-Pagination'));
-        this.resultLength = xpagination.TotalCount;
+        this.resultLength = xpagination?.TotalCount;
         this.dataSource = data.body;
       });
   }

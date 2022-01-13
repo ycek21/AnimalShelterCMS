@@ -26,10 +26,6 @@ export class AuthInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${token}`,
         },
       });
-    } else {
-      if (this.router.url !== '/user') {
-        this.router.navigate(['/user']);
-      }
     }
 
     return next.handle(req).pipe(

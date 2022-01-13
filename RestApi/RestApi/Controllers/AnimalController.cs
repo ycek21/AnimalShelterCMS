@@ -39,7 +39,7 @@ namespace RestApi.Controllers
             _photoService = photoService;
         }
 
-        [HttpGet, Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetAllAnimals([FromQuery] AnimalParameters animalParameters)
         {
 
@@ -63,7 +63,7 @@ namespace RestApi.Controllers
             }
         }
 
-        [HttpGet("{animalId}", Name = "GetAnimalById"), Authorize]
+        [HttpGet("{animalId}", Name = "GetAnimalById")]
         public async Task<IActionResult> GetAnimalById(Guid animalId)
         {
             var animal = await _repository.Animal.GetAnimalById(animalId, trackChanges: false);
@@ -147,7 +147,7 @@ namespace RestApi.Controllers
             return StatusCode(201, animalToReturn);
         }
 
-        [HttpGet("traits"), Authorize]
+        [HttpGet("traits")]
         public async Task<IActionResult> GetAnimalTraits()
         {
             var animalTraits = await _animalTraitService.GetAnimalTraits();
@@ -155,7 +155,7 @@ namespace RestApi.Controllers
             return Ok(animalTraits);
         }
 
-        [HttpPost("animalWithPhoto"), Authorize, DisableRequestSizeLimit]
+        [HttpPost("animalWithPhoto"), Authorize(Roles = "Administrator"), DisableRequestSizeLimit]
         public async Task<IActionResult> PostAnimalWithPhotos(
             [ModelBinder(typeof(JsonWithFilesFormDataModelBinder))][FromForm] AnimalForCreationDto animalForCreation,
             [FromForm] List<IFormFile> files)
