@@ -1,3 +1,4 @@
+import { DeleteAnimalPageComponent } from './delete-animal-page/delete-animal-page.component';
 import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.component';
 import { PageComponent } from './page/page.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -22,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserPageComponent } from './page/user-page/user-page/user-page.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
@@ -44,6 +47,8 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatSelectModule,
     FlexLayoutModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
     MatTableModule,
   ],
   declarations: [
@@ -52,6 +57,7 @@ import { MatTableModule } from '@angular/material/table';
     AddAnimalPageComponent,
     UserPageComponent,
     UserTableComponent,
+    DeleteAnimalPageComponent,
   ],
 })
 export class DashboardModule {}

@@ -52,8 +52,13 @@ export class FormComponent implements OnInit {
             decodedToken[
               'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
             ];
+          const userRole =
+            decodedToken[
+              'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+            ];
           localStorage.setItem('userToken', token);
           localStorage.setItem('userEmail', userEmail);
+          localStorage.setItem('userRole', userRole);
           this.authService.setLogged(true);
           this.router.navigate(['home']);
         }

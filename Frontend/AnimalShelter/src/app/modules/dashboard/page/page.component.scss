@@ -1,14 +1,14 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 80%;
 }
 mat-drawer {
   width: 350px;
 }
 
 mat-drawer-container {
-  height: 100%;
+  flex: 1 1 auto;
 }
 
 mat-drawer-content {

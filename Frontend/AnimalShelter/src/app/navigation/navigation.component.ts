@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from '../modules/user/services/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -20,7 +21,8 @@ export class NavigationComponent implements OnInit {
   subHeader: boolean = true;
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -59,7 +61,7 @@ export class NavigationComponent implements OnInit {
               this.subTitle = 'Dashboard ';
               break;
             }
-            case event.url.match('/animals/')?.input: {
+            case event.url.match('/dashboard/')?.input: {
               this.subTitle = 'Dashboard ';
               break;
             }
@@ -69,4 +71,11 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  getUserRole() {
+    return localStorage.getItem('userRole');
+  }
+  logOut() {
+    this.authService.setLogged(false);
+  }
 }

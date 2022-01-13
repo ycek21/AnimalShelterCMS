@@ -43,4 +43,15 @@ export class AnimalsService {
     });
     return this.http.post(url, formData);
   }
+  getAnimalsWithoutFilter(
+    pageNumber: number,
+    pageSize: number
+  ): Observable<HttpResponse<Animal[]>> {
+    const url = ANIMALS_URL + `?PageSize=${pageSize}&PageNumber=${pageNumber}`;
+    return this.http.get<Animal[]>(url, { observe: 'response' });
+  }
+  patchAnimalIsDead(animalId: string) {
+    const url = ANIMALS_URL + `/${animalId}`;
+    return this.http.patch(url, '');
+  }
 }
