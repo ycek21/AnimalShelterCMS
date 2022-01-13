@@ -81,6 +81,8 @@ namespace Entities
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new AspNetUserRolesConfiguration());
+            modelBuilder.ApplyConfiguration(new ConfigConfiguration());
+
         }
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Size> Sizes { get; set; }

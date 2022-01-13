@@ -44,6 +44,10 @@ namespace RestApi
             CreateMap<Color, ColorDto>();
             CreateMap<AnimalType, AnimalTypeDto>();
             CreateMap<ImageForCreationDto, Image>();
+            CreateMap<Config, ConfigDto>().ForMember(
+                dest => dest.ModifiedBy,
+                opt => opt.MapFrom(src => src.User.Email)
+            );
         }
     }
 }
