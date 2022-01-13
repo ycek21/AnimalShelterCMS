@@ -1,3 +1,4 @@
+import { DeleteAnimalPageComponent } from './delete-animal-page/delete-animal-page.component';
 import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.component';
 import { PageComponent } from './page/page.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: 'addAnimal',
         component: AddAnimalPageComponent,
+      },
+      {
+        path: 'animalList',
+        component: DeleteAnimalPageComponent,
       },
     ],
   },
