@@ -20,6 +20,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserPageComponent } from './page/user-page/user-page/user-page.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -41,7 +44,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatNativeDateModule,
     MatSelectModule,
     FlexLayoutModule,
+    MatTableModule,
   ],
-  declarations: [SidebarComponent, PageComponent, AddAnimalPageComponent],
+  declarations: [
+    SidebarComponent,
+    PageComponent,
+    AddAnimalPageComponent,
+    UserPageComponent,
+    UserTableComponent,
+  ],
 })
 export class DashboardModule {}
