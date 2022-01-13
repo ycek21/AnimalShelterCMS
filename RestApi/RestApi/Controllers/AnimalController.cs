@@ -88,6 +88,21 @@ namespace RestApi.Controllers
                 return NotFound("Animal with such Id doesn't exist");
             }
 
+            var userId = "";
+
+            try
+            {
+                var token = Request.Headers[HeaderNames.Authorization].ToString().Remove(0, 7);
+                var email = _authManager.GetUserEmail(token);
+                userId = await _authManager.GetUserId(email);
+            }
+            catch (System.Exception)
+            {
+                BadRequest(new { message = "Wrong payload" });
+            }
+            animal.ModifiedBy = userId;
+            animal.ModifiedAt = DateTime.Now;
+
             animal.IsDead = true;
             _repository.Animal.Update(animal);
 
