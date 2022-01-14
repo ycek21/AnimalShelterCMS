@@ -13,7 +13,6 @@ namespace RestApi.Controllers
 {
     [Route("api/configs")]
     [ApiController]
-    [Authorize]
     public class ConfigController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -36,6 +35,16 @@ namespace RestApi.Controllers
             var configEntities = await _repository.Config.GetAllConfigs(false);
 
             var configDtos = _mapper.Map<List<ConfigDto>>(configEntities);
+
+            return Ok(configDtos);
+        }
+
+        [HttpGet("configsAsDict")]
+        public async Task<IActionResult> GetConfigsAsDictionary()
+        {
+            var configEntities = await _repository.Config.GetAllConfigs(false);
+
+            var configDtos = _mapper.Map<Dictionary<string,string>>(configEntities);
 
             return Ok(configDtos);
         }

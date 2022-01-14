@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using Entities.DataTransferObjects;
 using Entities.Models;
@@ -48,6 +49,7 @@ namespace RestApi
                 dest => dest.ModifiedBy,
                 opt => opt.MapFrom(src => src.User.Email)
             );
+            CreateMap<Config,KeyValuePair<string,string>>().ConstructUsing(x => new KeyValuePair<string, string>(x.Key,x.Value));
         }
     }
 }
