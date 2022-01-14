@@ -3,6 +3,7 @@ import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.compon
 import { PageComponent } from './page/page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserPageComponent } from './page/user-page/user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: 'addAnimal',
         component: AddAnimalPageComponent,
+      },
+      {
+        path: 'users',
+        component: UserPageComponent,
       },
       {
         path: 'animalList',
