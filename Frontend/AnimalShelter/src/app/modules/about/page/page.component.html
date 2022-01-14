@@ -1,1 +1,34 @@
-<p>About page works!</p>
+<div class="container">
+  <div class="photo_wrapper">
+    <img class="photo__img" src="../../../../assets/about_us_photo.jpeg" />
+  </div>
+  <div class="info">
+    <div class="info__title__wrapper">
+      <div class="info__title__wrapper_style">Description</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="info__desc_wrapper">
+      <div class="info__desc_wrapper_style">
+        {{ informations["Description"] }}
+      </div>
+    </div>
+    <div class="info__contact_title_wrapper">
+      <div class="info__contact_title_wrapper-style">Contact details</div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="info__text_wrapper">
+      <div class="row">
+        <div class="row_text">
+          Street : {{ informations["Street"] }}
+          {{ informations["HouseNumber"] }}
+        </div>
+        <div class="row_text">City : {{ informations["City"] }}</div>
+        <div class="row_text">Post code : {{ informations["Postcode"] }}</div>
+        <div class="row_text">Country : {{ informations["Country"] }}</div>
+        <div class="row_text">
+          Account number : {{ informations["AccountNumber"] }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

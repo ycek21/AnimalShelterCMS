@@ -15,55 +15,55 @@ namespace Entities.Configuration
             builder.HasData(
                 new Config
                 {
-                    Key = "Miasto",
+                    Key = "City",
                     Value = "",
                     ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                 },
                 new Config
                 {
-                    Key = "Ulica",
+                    Key = "Street",
                     Value = "",
                     ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                 },
                 new Config
                 {
-                    Key = "NumerDomu",
+                    Key = "HouseNumber",
                     Value = "",
                     ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                 },
                 new Config
                 {
-                    Key = "KodPocztowy",
+                    Key = "Postcode",
                     Value = "",
                     ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                 }, new Config
                 {
-                    Key = "NumerKonta",
+                    Key = "AccountNumber",
                     Value = "",
                     ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                 },
                  new Config
                  {
-                     Key = "Opis",
+                     Key = "Description",
                      Value = "",
                      ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                  },
                  new Config
                  {
-                     Key = "Nazwa",
+                     Key = "Name",
                      Value = "",
                      ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
                  },
                  new Config
                  {
-                     Key = "Kraj",
+                     Key = "Country",
                      Value = "",
                      ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7"
 
