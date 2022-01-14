@@ -26,6 +26,13 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { ConfigPageComponent } from './page/config-page/config-page/config-page.component';
+import { ConfigTableComponent } from './components/config-table/config-table/config-table.component';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from '@angular/material/dialog';
+import { PatchConfigDialogComponent } from './components/patch-config-dialog/patch-config-dialog/patch-config-dialog.component';
 
 @NgModule({
   imports: [
@@ -50,6 +57,7 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatDialogModule,
   ],
   declarations: [
     SidebarComponent,
@@ -58,6 +66,9 @@ import { MatTableModule } from '@angular/material/table';
     UserPageComponent,
     UserTableComponent,
     DeleteAnimalPageComponent,
+    ConfigPageComponent,
+    ConfigTableComponent,
+    PatchConfigDialogComponent,
   ],
 })
 export class DashboardModule {}

@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Change value of {{ configKey }}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="standard">
+      <input matInput formControlName="newConfigValue" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions class="dialogActionsWrapper">
+  <div>
+    <button mat-raised-button (click)="onSave()" [disabled]="form.invalid">
+      Save
+    </button>
+    <button mat-raised-button (click)="onClose()" color="warn">Discard</button>
+  </div>
+</div>
