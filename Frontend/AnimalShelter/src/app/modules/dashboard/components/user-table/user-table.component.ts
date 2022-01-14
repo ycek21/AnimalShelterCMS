@@ -25,9 +25,7 @@ export class UserTableComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log('userEmail :>> ', this.userEmail);
-  }
+  ngOnInit() {}
 
   public deleteUser(user: User) {
     this.userToDelete.emit(user);

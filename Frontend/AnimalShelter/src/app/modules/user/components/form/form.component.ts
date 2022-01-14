@@ -73,7 +73,9 @@ export class FormComponent implements OnInit {
   }
 
   register() {
-    this.authService.register(this.registerForm.value).subscribe((resp) => {});
+    this.authService.register(this.registerForm.value).subscribe((resp) => {
+      this.router.navigate(['/home']);
+    });
   }
   validatorPassword(fc: FormControl) {
     const value = fc.value as string;

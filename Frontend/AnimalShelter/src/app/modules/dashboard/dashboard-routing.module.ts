@@ -4,6 +4,7 @@ import { PageComponent } from './page/page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserPageComponent } from './page/user-page/user-page/user-page.component';
+import { ConfigPageComponent } from './page/config-page/config-page/config-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'animalList',
         component: DeleteAnimalPageComponent,
+      },
+      {
+        path: 'config',
+        component: ConfigPageComponent,
       },
     ],
   },
