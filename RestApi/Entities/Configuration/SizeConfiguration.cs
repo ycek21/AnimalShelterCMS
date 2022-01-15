@@ -17,31 +17,31 @@ namespace Entities.Configuration
                 new Size
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Bardzo mały"
+                    Value = "Very small"
                 },
 
                 new Size
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Mały"
+                    Value = "Small"
                 },
 
                 new Size
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Duży"
+                    Value = "Big"
                 },
 
                  new Size
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Średni"
+                     Value = "Medium"
                  },
 
                  new Size
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Bardzo duży"
+                     Value = "Very big"
                  }
             );
         }

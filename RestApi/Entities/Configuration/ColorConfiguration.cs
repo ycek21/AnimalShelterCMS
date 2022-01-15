@@ -19,25 +19,25 @@ namespace Entities.Configuration
                 new Color
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Czarny"
+                    Value = "Black"
                 },
 
                 new Color
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Biały"
+                    Value = "White"
                 },
 
                  new Color
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Mieszany"
+                     Value = "Mixed"
                  },
 
                  new Color
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Rudy"
+                     Value = "Red"
                  },
 
                  new Color
@@ -49,43 +49,43 @@ namespace Entities.Configuration
                  new Color
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Niebieski"
+                     Value = "Blue"
                  },
 
                  new Color
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Pstrokaty"
+                     Value = "Grey"
                  },
 
                  new Color
                  {
                      Id = Guid.NewGuid(),
-                     Value = "Podpalane"
+                     Value = "Fawn"
                  },
 
                   new Color
                   {
                       Id = Guid.NewGuid(),
-                      Value = "Marengo"
+                      Value = "Cream"
                   },
 
                   new Color
                   {
                       Id = Guid.NewGuid(),
-                      Value = "Śniady"
+                      Value = "Gold"
                   },
 
                   new Color
                   {
                       Id = Guid.NewGuid(),
-                      Value = "Wilczy"
+                      Value = "Yellow"
                   },
 
                   new Color
                   {
                       Id = Guid.NewGuid(),
-                      Value = "Dzicze"
+                      Value = "Brown"
                   }
             );
         }

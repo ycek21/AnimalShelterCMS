@@ -14,13 +14,13 @@ namespace Entities.Configuration
                 new AnimalType
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Pies"
+                    Value = "Dog"
                 },
 
                 new AnimalType
                 {
                     Id = Guid.NewGuid(),
-                    Value = "Kot"
+                    Value = "Cat"
                 }
             );
         }
