@@ -26,7 +26,11 @@
       <a mat-list-item routerLink="/fundraisers" (click)="drawer.toggle()"
         >Fundraisers</a
       >
-      <a mat-list-item routerLink="/user" (click)="drawer.toggle()"
+      <a
+        mat-list-item
+        *ngIf="isLogedIn() === null"
+        routerLink="/user"
+        (click)="drawer.toggle()"
         ><mat-icon class="user-icon">people_outline</mat-icon></a
       >
       <a
@@ -36,7 +40,12 @@
         (click)="drawer.toggle()"
         ><mat-icon class="user-icon">poll</mat-icon></a
       >
-      <a mat-list-item (click)="drawer.toggle()" (click)="logOut()">
+      <a
+        mat-list-item
+        *ngIf="isLogedIn() !== null"
+        (click)="drawer.toggle()"
+        (click)="logOut()"
+      >
         <mat-icon class="user-icon">power_settings_new</mat-icon></a
       >
     </mat-nav-list>
@@ -53,13 +62,13 @@
         <a routerLink="/animals">Animals</a>
         <a routerLink="/adoptions">Adoptions</a>
         <a routerLink="/fundraisers">Fundraisers</a>
-        <a routerLink="/user">
+        <a *ngIf="isLogedIn() === null" routerLink="/user">
           <mat-icon class="user-icon">people_outline</mat-icon>
         </a>
         <a *ngIf="getUserRole() === 'Administrator'" routerLink="/dashboard">
           <mat-icon class="user-icon">poll</mat-icon>
         </a>
-        <a routerLink="/user" (click)="logOut()">
+        <a *ngIf="isLogedIn() !== null" routerLink="/user" (click)="logOut()">
           <mat-icon class="user-icon">power_settings_new</mat-icon>
         </a>
       </span>

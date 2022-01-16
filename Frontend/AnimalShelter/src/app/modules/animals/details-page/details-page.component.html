@@ -13,7 +13,7 @@
       <div class="divider"></div>
       <span class="text__wrapper-date">
         <h2 style="font-family: Montserrat">
-          {{ animal.dateOfBirth | date: "dd/MM/yyyy" }}
+          {{ animal.dateOfBirth | date: "dd.MM.yyyy" }}
         </h2>
       </span>
     </div>
@@ -22,10 +22,10 @@
         Character : {{ animal.character }}
       </h3>
       <h3 class="text_wrapper-attributes-style">
-        Weight : {{ animal.weight }}
+        Weight : {{ animal.weight }} [kg]
       </h3>
       <h3 class="text_wrapper-attributes-style">
-        Walk limit : {{ animal.walkLimit }}
+        Walk limit : {{ animal.walkLimit }} [km]
       </h3>
       <h3 class="text_wrapper-attributes-style">Size : {{ animal.size }}</h3>
       <h3 class="text_wrapper-attributes-style">Color : {{ animal.color }}</h3>

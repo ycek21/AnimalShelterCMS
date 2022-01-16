@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
@@ -45,6 +46,7 @@ import { MatMenuModule } from '@angular/material/menu';
       multi: true,
     },
     DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'pl' },
   ],
   bootstrap: [AppComponent],
 })

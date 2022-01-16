@@ -75,6 +75,9 @@ export class NavigationComponent implements OnInit {
   getUserRole() {
     return localStorage.getItem('userRole');
   }
+  isLogedIn() {
+    return localStorage.getItem('userToken');
+  }
   logOut() {
     this.authService.setLogged(false);
   }
