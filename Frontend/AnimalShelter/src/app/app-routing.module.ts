@@ -15,16 +15,12 @@ const routes: Routes = [
   {
     path: 'fundraisers',
     loadChildren: () =>
-      import('./modules/fundraisers/fundraisers.module').then(
-        (m) => m.FundraisersModule
-      ),
+      import('./shared/shared.module').then((m) => m.SharedModule),
   },
   {
     path: 'adoptions',
     loadChildren: () =>
-      import('./modules/adoptions/adoptions.module').then(
-        (m) => m.AdoptionsModule
-      ),
+      import('./shared/shared.module').then((m) => m.SharedModule),
   },
   {
     path: 'user',

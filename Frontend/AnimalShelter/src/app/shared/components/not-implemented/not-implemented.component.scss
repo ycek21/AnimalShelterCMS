@@ -1,0 +1,25 @@
+.contentWrapper {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentWrapper__textBox {
+  width: 40vw;
+  height: 30vh;
+  background-color: #26a450;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.contentWrapper__text {
+  font-size: 3.5rem;
+  color: white;
+  font-weight: bold;
+}
