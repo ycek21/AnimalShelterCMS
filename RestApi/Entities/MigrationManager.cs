@@ -4,27 +4,29 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Text;
-// using Repository;
-public static class MigrationManager
+namespace Entities
 {
-    public static IHost MigrateDatabase(this IHost host)
+    public static class MigrationManager
     {
-        using (var scope = host.Services.CreateScope())
+        public static IHost MigrateDatabase(this IHost host)
         {
-            using (var appContext = scope.ServiceProvider.GetRequiredService<RepositoryManager>())
+            using (var scope = host.Services.CreateScope())
             {
-                try
+                using (var appContext = scope.ServiceProvider.GetRequiredService<RepositoryContext>())
                 {
-                    appContext.Database.Migrate();
-                }
-                catch (Exception ex)
-                {
-                    //Log errors or do anything you think it's needed
-                    throw;
+                    try
+                    {
+                        appContext.Database.Migrate();
+                    }
+                    catch (Exception ex)
+                    {
+                        //Log errors or do anything you think it's needed
+                        throw;
+                    }
                 }
             }
-        }
 
-        return host;
+            return host;
+        }
     }
 }

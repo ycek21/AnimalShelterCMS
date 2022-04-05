@@ -10,7 +10,4 @@
      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.0" />
 
   </ItemGroup>
-   <!-- <ItemGroup>
-      <ProjectReference Include="../Repository/Repository.csproj" />
-  </ItemGroup> -->
 </Project>
