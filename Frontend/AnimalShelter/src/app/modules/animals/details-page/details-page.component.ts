@@ -39,6 +39,6 @@ export class DetailsPageComponent implements OnInit {
     }
   }
   public createImgPath = (serverPath: string) => {
-    return `https://localhost:5001/${serverPath}`;
+    return `http://localhost:5000/${serverPath}`;
   };
 }
