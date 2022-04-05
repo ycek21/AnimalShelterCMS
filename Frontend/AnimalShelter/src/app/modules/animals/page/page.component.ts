@@ -97,6 +97,6 @@ export class PageComponent implements OnInit, AfterViewInit {
     }
   }
   public createImgPath = (serverPath: string) => {
-    return `http://localhost:5000/${serverPath}`;
+    return `https://localhost:5001/${serverPath}`;
   };
 }
