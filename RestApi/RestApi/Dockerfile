@@ -23,8 +23,7 @@ WORKDIR /app/RestApi
 RUN dotnet publish -c Release -o out 
 #
 FROM mcr.microsoft.com/dotnet/aspnet:5.0.15 AS runtime
-WORKDIR /app 
-# RUN mkdir Resources
+WORKDIR /app/RestApi 
 COPY --from=build /app/RestApi/Resources/. ./Resources
 #
 COPY --from=build /app/RestApi/out ./

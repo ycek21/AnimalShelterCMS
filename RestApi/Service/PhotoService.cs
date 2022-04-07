@@ -37,10 +37,6 @@ namespace Service
                     var parentPath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).ToString(), "RestApi");
                     var pathToSave = Path.Combine(parentPath, folderName);
 
-                    _logger.LogWarn(folderName.ToString());
-                    _logger.LogWarn(parentPath.ToString());
-                    _logger.LogWarn(pathToSave.ToString());
-
 
                     var checkIfDirExists = Directory.Exists(pathToSave);
 
@@ -53,14 +49,7 @@ namespace Service
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
 
-                    _logger.LogWarn(fileName.ToString());
-                    _logger.LogWarn(fullPath.ToString());
-                    _logger.LogWarn(dbPath.ToString());
-                    _logger.LogDebug("xd");
-
-
-
-                    using (var stream = new FileStream(dbPath, FileMode.Create))
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         fileToUpload.CopyTo(stream);
                     }
