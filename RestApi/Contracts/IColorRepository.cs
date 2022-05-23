@@ -9,5 +9,7 @@ namespace Contracts
     public interface IColorRepository : IRepositoryBase<Color>
     {
         Task<IEnumerable<Color>> GetAllColors(bool trackChanges);
+
+        void CreateColor(Color color);
     }
 }

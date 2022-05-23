@@ -22,5 +22,9 @@ namespace Repository
 
             return colors;
         }
+        public void CreateColor(Color color)
+        {
+            Create(color);
+        }
     }
 }
