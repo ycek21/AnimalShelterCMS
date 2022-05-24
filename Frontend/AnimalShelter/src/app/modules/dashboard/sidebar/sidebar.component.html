@@ -35,11 +35,39 @@
   <mat-accordion class="app-nav-accordion">
     <mat-expansion-panel class="mat-elevation-z0">
       <mat-expansion-panel-header>
-        <mat-panel-title>Colors</mat-panel-title>
+        <mat-panel-title>Color</mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
         <a mat-list-item routerLink="/dashboard/addColor">Add color</a>
-        <a mat-list-item routerLink="/dashboard/colorList">Color list</a>
+        <a mat-list-item routerLink="/dashboard/traits/color">Color list</a>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-divider></mat-divider>
+
+  <mat-accordion class="app-nav-accordion">
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Size</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard/addColor">Add size</a>
+        <a mat-list-item routerLink="/dashboard/traits/size">Size list</a>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-divider></mat-divider>
+
+  <mat-accordion class="app-nav-accordion">
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Animal type</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard/addColor">Add animal type</a>
+        <a mat-list-item routerLink="/dashboard/traits/animalType"
+          >Animal type list</a
+        >
       </mat-nav-list>
     </mat-expansion-panel>
   </mat-accordion>

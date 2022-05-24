@@ -1,4 +1,4 @@
-import { ColorListPageComponent } from './traits/color-list-page/color-list-page.component';
+import { TraitsListPageComponent } from './traits/traits-list-page/traits-list-page.component';
 import { DeleteAnimalPageComponent } from './delete-animal-page/delete-animal-page.component';
 import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.component';
 import { PageComponent } from './page/page.component';
@@ -29,8 +29,8 @@ const routes: Routes = [
         component: ConfigPageComponent,
       },
       {
-        path: 'colorList',
-        component: ColorListPageComponent,
+        path: 'traits/:id',
+        component: TraitsListPageComponent,
       },
     ],
   },
