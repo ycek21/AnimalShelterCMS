@@ -1,3 +1,5 @@
+import { ColorListPageComponent } from './traits/color-list-page/color-list-page.component';
+import { HelpTableComponent } from './components/help-table/help-table.component';
 import { DeleteAnimalPageComponent } from './delete-animal-page/delete-animal-page.component';
 import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.component';
 import { PageComponent } from './page/page.component';
@@ -69,6 +71,8 @@ import { PatchConfigDialogComponent } from './components/patch-config-dialog/pat
     ConfigPageComponent,
     ConfigTableComponent,
     PatchConfigDialogComponent,
+    HelpTableComponent,
+    ColorListPageComponent,
   ],
 })
 export class DashboardModule {}
