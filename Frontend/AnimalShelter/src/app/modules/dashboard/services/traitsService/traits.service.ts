@@ -14,4 +14,8 @@ export class TraitsService {
     const url = BASE_URL + `${traits}`;
     return this.http.get<Trait[]>(url);
   }
+  public postNewTrait(type: string, value: string) {
+    const url = BASE_URL + `${type}?${type}=${value}`;
+    return this.http.post(url, '');
+  }
 }

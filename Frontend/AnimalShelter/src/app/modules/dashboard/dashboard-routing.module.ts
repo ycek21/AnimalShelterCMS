@@ -1,3 +1,4 @@
+import { AddTraitsPageComponent } from './traits/add-traits-page/add-traits-page.component';
 import { TraitsListPageComponent } from './traits/traits-list-page/traits-list-page.component';
 import { DeleteAnimalPageComponent } from './delete-animal-page/delete-animal-page.component';
 import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'traits/:id',
         component: TraitsListPageComponent,
+      },
+      {
+        path: 'add-traits/:id',
+        component: AddTraitsPageComponent,
       },
     ],
   },

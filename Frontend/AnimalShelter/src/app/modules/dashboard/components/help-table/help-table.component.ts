@@ -11,7 +11,7 @@ export class HelpTableComponent implements OnInit {
   @Input() data: Observable<Trait[]>;
   constructor() {}
 
-  displayedColumns: string[] = ['id', 'value'];
+  displayedColumns: string[] = ['on', 'value'];
 
   ngOnInit() {}
 }
