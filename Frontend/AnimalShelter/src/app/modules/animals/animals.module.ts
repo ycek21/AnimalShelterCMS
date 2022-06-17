@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatInputModule,
   ],
   declarations: [PageComponent, DetailsPageComponent],
 })
