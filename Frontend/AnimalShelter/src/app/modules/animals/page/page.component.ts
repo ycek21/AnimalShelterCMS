@@ -88,11 +88,11 @@ export class PageComponent implements OnInit, AfterViewInit {
     let url = this.router.url.split('/').pop();
     if (url === 'dogs') {
       this.filterForm.patchValue({
-        animalType: 'Pies',
+        animalType: 'Dog',
       });
     } else if (url === 'cats') {
       this.filterForm.patchValue({
-        animalType: 'Kot',
+        animalType: 'Cat',
       });
     }
   }
