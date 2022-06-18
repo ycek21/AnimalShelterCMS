@@ -58,11 +58,15 @@ export class NavigationComponent implements OnInit {
               break;
             }
             case '/dashboard': {
-              this.subTitle = 'Dashboard ';
+              this.subTitle = 'Dashboard';
               break;
             }
             case event.url.match('/dashboard/')?.input: {
               this.subTitle = 'Dashboard ';
+              break;
+            }
+            case '/walks': {
+              this.subTitle = 'My walks';
               break;
             }
           }

@@ -40,6 +40,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'walks',
+    loadChildren: () =>
+      import('./modules/walks/walks.module').then((m) => m.WalksModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

@@ -20,11 +20,18 @@
         (click)="drawer.toggle() && logOut()"
         >Animals</a
       >
-      <a mat-list-item routerLink="/adoptions" (click)="drawer.toggle()"
+      <!-- <a mat-list-item routerLink="/adoptions" (click)="drawer.toggle()"
         >Adoptions</a
       >
       <a mat-list-item routerLink="/fundraisers" (click)="drawer.toggle()"
         >Fundraisers</a
+      > -->
+      <a
+        mat-list-item
+        routerLink="/walks"
+        *ngIf="isLogedIn() === null"
+        (click)="drawer.toggle()"
+        >My walks</a
       >
       <a
         mat-list-item
@@ -60,8 +67,16 @@
         <a routerLink="/home">Home</a>
         <a routerLink="/about">About us</a>
         <a routerLink="/animals">Animals</a>
-        <a routerLink="/adoptions">Adoptions</a>
-        <a routerLink="/fundraisers">Fundraisers</a>
+        <!-- <a routerLink="/adoptions">Adoptions</a>
+        <a routerLink="/fundraisers">Fundraisers</a> -->
+        <a
+          *ngIf="
+            getUserRole() === 'Administrator' || getUserRole() === 'CommonUser'
+          "
+          routerLink="/walks"
+          >My walks</a
+        >
+
         <a *ngIf="isLogedIn() === null" routerLink="/user">
           <mat-icon class="user-icon">people_outline</mat-icon>
         </a>
