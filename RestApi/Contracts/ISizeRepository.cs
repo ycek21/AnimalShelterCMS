@@ -9,5 +9,7 @@ namespace Contracts
     public interface ISizeRepository : IRepositoryBase<Size>
     {
         Task<IEnumerable<Size>> GetAllSizes(bool trackChanges);
+
+        void CreateSize(Size size);
     }
 }

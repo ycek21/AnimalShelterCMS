@@ -1,0 +1,15 @@
+@use "@angular/material" as mat;
+
+.table {
+  width: 100%;
+  @include mat.elevation(1);
+}
+
+.deleteButton {
+  margin-right: 10px;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 10px;
+}

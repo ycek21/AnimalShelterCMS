@@ -1,3 +1,7 @@
+import { TraitsFormComponent } from './components/traits-form/traits-form.component';
+import { AddTraitsPageComponent } from './traits/add-traits-page/add-traits-page.component';
+import { TraitsListPageComponent } from './traits/traits-list-page/traits-list-page.component';
+import { HelpTableComponent } from './components/help-table/help-table.component';
 import { DeleteAnimalPageComponent } from './delete-animal-page/delete-animal-page.component';
 import { AddAnimalPageComponent } from './add-animal-page/add-animal-page.component';
 import { PageComponent } from './page/page.component';
@@ -33,6 +37,7 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { PatchConfigDialogComponent } from './components/patch-config-dialog/patch-config-dialog/patch-config-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -58,6 +63,7 @@ import { PatchConfigDialogComponent } from './components/patch-config-dialog/pat
     MatProgressSpinnerModule,
     MatTableModule,
     MatDialogModule,
+    FormsModule,
   ],
   declarations: [
     SidebarComponent,
@@ -69,6 +75,10 @@ import { PatchConfigDialogComponent } from './components/patch-config-dialog/pat
     ConfigPageComponent,
     ConfigTableComponent,
     PatchConfigDialogComponent,
+    HelpTableComponent,
+    TraitsListPageComponent,
+    AddTraitsPageComponent,
+    TraitsFormComponent,
   ],
 })
 export class DashboardModule {}
