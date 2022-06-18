@@ -37,8 +37,7 @@ namespace RestApi.Controllers
             return Ok(animalType);
         }
 
-    //Add Authorize
-        [HttpPost]
+        [HttpPost,Authorize(Roles = "Administrator")]
         public async Task<IActionResult> PostAnimalType(String animalType)
         {
             if(animalType == "")

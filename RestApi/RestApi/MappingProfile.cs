@@ -49,6 +49,20 @@ namespace RestApi
                 dest => dest.ModifiedBy,
                 opt => opt.MapFrom(src => src.User.Email)
             );
+            CreateMap<WalkForCreationDto,Walk>().ForMember(
+                dest => dest.Date,
+                opt => opt.MapFrom(src => src.DateOfWalk)
+
+            ).ForMember(dest => dest.AnimalId,
+                opt => opt.MapFrom(src => src.AnimalId));
+            
+            CreateMap<Walk,WalkDto>().ForMember(
+                 dest => dest.Date,
+                opt => opt.MapFrom(src => src.Date)
+            ).ForMember(
+                dest => dest.Id,
+                opt => opt.MapFrom(src => src.Id)
+            );
             CreateMap<Config,KeyValuePair<string,string>>().ConstructUsing(x => new KeyValuePair<string, string>(x.Key,x.Value));
         }
     }

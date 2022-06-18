@@ -17,6 +17,7 @@ namespace Repository
         private IAnimalTypeRepository _animalTypeRepository;
         private IImageRepository _imageRepository;
         private IConfigRepository _configRepository;
+        private IWalkRepository _walkRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -88,6 +89,16 @@ namespace Repository
                 if (_configRepository == null)
                     _configRepository = new ConfigRepository(_repositoryContext);
                 return _configRepository;
+            }
+        }
+
+        public IWalkRepository Walk
+        {
+            get
+            {
+                if (_walkRepository == null)
+                    _walkRepository = new WalkRepository(_repositoryContext);
+                return _walkRepository;
             }
         }
 

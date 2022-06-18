@@ -37,8 +37,7 @@ namespace RestApi.Controllers
             return Ok(sizes);
         }
 
-    //Add Authorize
-        [HttpPost]
+        [HttpPost,Authorize(Roles = "Administrator")]
         public async Task<IActionResult> PostSize(String size)
         {
             if(size == "")

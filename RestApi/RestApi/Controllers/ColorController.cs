@@ -37,8 +37,7 @@ namespace RestApi.Controllers
             return Ok(colors);
         }
 
-    //Add Authorize
-        [HttpPost]
+        [HttpPost,Authorize(Roles = "Administrator")]
         public async Task<IActionResult> PostColor(String color)
         {
             if(color == "")
