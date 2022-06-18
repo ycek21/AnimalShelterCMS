@@ -9,5 +9,7 @@ namespace Contracts
     public interface IAnimalTypeRepository : IRepositoryBase<AnimalType>
     {
         Task<IEnumerable<AnimalType>> GetAllAnimalTypes(bool trackChanges);
+
+        void CreateAnimalType(AnimalType animalType);
     }
 }

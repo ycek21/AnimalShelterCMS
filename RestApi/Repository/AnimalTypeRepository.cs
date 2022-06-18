@@ -22,5 +22,9 @@ namespace Repository
 
             return animalTypes;
         }
+        public void CreateAnimalType(AnimalType animalType)
+        {
+            Create(animalType);
+        }
     }
 }

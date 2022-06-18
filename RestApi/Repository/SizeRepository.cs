@@ -23,5 +23,10 @@ namespace Repository
 
             return sizes;
         }
+        
+        public void CreateSize(Size size)
+        {
+            Create(size);
+        }
     }
 }
