@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/RestApi/RestApi/bin/Debug/net5.0/RestApi.dll",
+            "program": "${workspaceFolder}/RestApi/RestApi/bin/Debug/net6.0/RestApi.dll",
             "args": [],
             "cwd": "${workspaceFolder}/RestApi/RestApi",
             "stopAtEntry": false,
