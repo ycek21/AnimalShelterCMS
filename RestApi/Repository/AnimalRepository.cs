@@ -27,6 +27,9 @@ namespace Repository
                 .Where(a => animalParameters.Color == null ? true : animalParameters.Color.Contains(a.Color.Value))
                 .Where(a => animalParameters.AnimalType == null ? true : animalParameters.AnimalType.Contains(a.AnimalType.Value))
                 .Where(a => animalParameters.Size == null ? true : animalParameters.Size.Contains(a.Size.Value))
+                .Where(a => animalParameters.Age == null ? true : DateTime.Today.AddYears((int)-animalParameters.Age) <= a.DateOfBirth
+
+                )
                 .ToListAsync();
 
             return PagedList<Animal>.ToPagedList(animals, animalParameters.PageNumber, animalParameters.PageSize);
