@@ -1,5 +1,6 @@
 using System.IO;
 using Contracts;
+using EmailService;
 using Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -48,6 +49,7 @@ namespace RestApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestApi", Version = "v1" });
             });
+            services.ConfigureEmailSerivce(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
