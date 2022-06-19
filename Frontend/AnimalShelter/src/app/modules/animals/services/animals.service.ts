@@ -23,7 +23,8 @@ export class AnimalsService {
         filterForm.get('animalType')?.value
       }&Color=${filterForm.get('color')?.value}&Size=${
         filterForm.get('size')?.value
-      }&Character=${filterForm.get('character')?.value}`;
+      }&Character=${filterForm.get('character')?.value}
+      &Age=${filterForm.get('maxAge')?.value}`;
     return this.http.get<Animal[]>(url, { observe: 'response' });
   }
   getAnimal(id: string): Observable<Animal> {

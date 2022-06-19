@@ -1,10 +1,9 @@
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AnimalsService } from './../services/animals.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Animal } from '../models/animal';
 import { MatPaginator } from '@angular/material/paginator';
-import { catchError, filter, map, merge, startWith, switchMap } from 'rxjs';
-import { Types } from '../models/type';
+import { map, merge, startWith, switchMap } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Traits } from '../models/traits';
 
@@ -21,8 +20,10 @@ export class PageComponent implements OnInit, AfterViewInit {
     color: [''],
     animalType: [''],
     character: [''],
+    maxAge: [''],
   });
   filters: Traits;
+  maxAges: number[] = [1, 2, 3, 4, 5, 10, 15];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -79,6 +80,7 @@ export class PageComponent implements OnInit, AfterViewInit {
       color: '',
       animalType: '',
       character: '',
+      maxAge: '',
     });
   }
   getTraits() {
