@@ -25,25 +25,41 @@ namespace RestApi.Controllers
 
         private readonly IMapper _mapper;
         private readonly IAuthenticationManager _authManager;
-      
 
-        public WalkController(IRepositoryManager repository, IMapper mapper,IAuthenticationManager authManager)
+
+        public WalkController(IRepositoryManager repository, IMapper mapper, IAuthenticationManager authManager)
         {
             _repository = repository;
-            _mapper=mapper;
-            _authManager=authManager;
+            _mapper = mapper;
+            _authManager = authManager;
         }
 
 
         [HttpGet("{animalId}", Name = "GetAnimalWalks")]
         public async Task<IActionResult> GetAnimalWalks(Guid animalId)
         {
-            var walks=await _repository.Walk.GetAnimalWalks(animalId,false);
-            var walksDto=_mapper.Map<IEnumerable<WalkDto>>(walks);
+            var walks = await _repository.Walk.GetAnimalWalks(animalId, false);
+            var walksDto = _mapper.Map<IEnumerable<WalkDto>>(walks);
             return Ok(walksDto);
         }
-        
-        [HttpPost]
+
+        [HttpDelete("{walkId}", Name = "DeleteWalk"), Authorize(Roles = "CommonUser, Administrator")]
+        public async Task<IActionResult> DeleteWalk(Guid walkId)
+        {
+            var walk = _repository.Walk.FindByCondition(x => x.Id == walkId, false).FirstOrDefault();
+
+            if (walk == null)
+            {
+                return NotFound();
+            }
+
+            _repository.Walk.DeleteWalk(walk);
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
+
+        [HttpPost, Authorize(Roles = "CommonUser, Administrator")]
         public async Task<IActionResult> PostWalk(WalkForCreationDto walkForCreation)
         {
             if (walkForCreation == null)
@@ -57,9 +73,9 @@ namespace RestApi.Controllers
             }
             var userId = "";
 
-            
-            var result=_repository.Walk.FindByCondition(x => x.Date == walkForCreation.DateOfWalk,false).FirstOrDefault();
-            if(result != null)
+
+            var result = _repository.Walk.FindByCondition(x => x.Date == walkForCreation.DateOfWalk, false).FirstOrDefault();
+            if (result != null)
             {
                 return BadRequest("This date is already reserved ");
             }
@@ -76,8 +92,8 @@ namespace RestApi.Controllers
             }
 
             var walk = _mapper.Map<Walk>(walkForCreation);
-            walk.UserId=userId;
-            walk.Accepted=true;
+            walk.UserId = userId;
+            walk.Accepted = true;
 
             _repository.Walk.Create(walk);
             await _repository.SaveAsync();
