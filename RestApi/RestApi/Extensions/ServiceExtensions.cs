@@ -1,5 +1,6 @@
 using System.Text;
 using Contracts;
+using EmailService;
 using Entities;
 using Entities.Models;
 using LoggerService;
@@ -47,6 +48,7 @@ namespace Extensions
                 o.Password.RequireNonAlphanumeric = false;
                 o.Password.RequiredLength = 10;
                 o.User.RequireUniqueEmail = true;
+                o.SignIn.RequireConfirmedEmail = true;
             });
             builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole),
            builder.Services);
@@ -84,6 +86,14 @@ namespace Extensions
 
         public static void ConfigurePhotoService(this IServiceCollection services) =>
                services.AddScoped<IPhotoService, PhotoService>();
+
+        public static void ConfigureEmailSerivce(this IServiceCollection services, IConfiguration configuration)
+        {
+            var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IEmailSender, EmailSender>();
+        }
+
 
     }
 }
