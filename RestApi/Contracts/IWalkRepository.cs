@@ -8,8 +8,10 @@ namespace Contracts
 {
     public interface IWalkRepository : IRepositoryBase<Walk>
     {
-        Task<IEnumerable<Walk>> GetAnimalWalks(Guid AnimalId,bool trackChanges);
+        Task<IEnumerable<Walk>> GetAnimalWalks(Guid AnimalId, bool trackChanges);
 
         void CreateWalk(Walk walk);
+
+        void DeleteWalk(Walk Walk);
     }
 }

@@ -22,6 +22,7 @@ namespace Entities.Configuration
                 NormalizedEmail = "admin.animalshelter@gmail.com".ToUpper(),
                 DateOfBirth = DateTime.Parse("2000-01-01"),
                 SecurityStamp = Guid.NewGuid().ToString(),
+                EmailConfirmed = true
             };
             admin.PasswordHash = PasswordGenerate(admin);
 
