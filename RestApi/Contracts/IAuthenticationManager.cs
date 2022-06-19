@@ -14,6 +14,7 @@ namespace Contracts
         Task<string> GetUserId(string email);
         string GetUserEmail(string token);
         int? GetExpirationDate(string token);
+        Task<IList<string>> GetUserRoles(string token);
 
     }
 }

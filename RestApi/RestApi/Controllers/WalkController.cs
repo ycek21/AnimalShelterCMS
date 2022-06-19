@@ -46,7 +46,17 @@ namespace RestApi.Controllers
         [HttpDelete("{walkId}", Name = "DeleteWalk"), Authorize(Roles = "CommonUser, Administrator")]
         public async Task<IActionResult> DeleteWalk(Guid walkId)
         {
+            var token = Request.Headers[HeaderNames.Authorization].ToString().Remove(0, 7);
+            var email = _authManager.GetUserEmail(token);
+            var userId = await _authManager.GetUserId(email);
+            var userRoles = await _authManager.GetUserRoles(token);
+
             var walk = _repository.Walk.FindByCondition(x => x.Id == walkId, false).FirstOrDefault();
+
+            if (userRoles.Contains("CommonUser") && walk.UserId != userId)
+            {
+                return StatusCode(403, "User is not a walk owner");
+            }
 
             if (walk == null)
             {
