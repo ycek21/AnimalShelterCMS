@@ -42,6 +42,16 @@
         >
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field class="filter__style-form" *ngIf="filters">
+      <mat-label>Character</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="character"
+        placeholder="Character"
+      />
+    </mat-form-field>
     <button
       mat-raised-button
       color="primary"

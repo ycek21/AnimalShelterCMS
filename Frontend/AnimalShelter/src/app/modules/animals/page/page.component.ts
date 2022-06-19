@@ -19,6 +19,7 @@ export class PageComponent implements OnInit, AfterViewInit {
     size: [''],
     color: [''],
     animalType: [''],
+    character: [''],
     maxAge: [''],
   });
   filters: Traits;
@@ -78,6 +79,7 @@ export class PageComponent implements OnInit, AfterViewInit {
       size: '',
       color: '',
       animalType: '',
+      character: '',
       maxAge: '',
     });
   }

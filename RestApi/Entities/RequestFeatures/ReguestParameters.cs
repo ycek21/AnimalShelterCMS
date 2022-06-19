@@ -27,6 +27,7 @@ namespace Entities.RequestFeatures
         public string? AnimalType { get; set; }
         public string? Color { get; set; }
         public string? Size { get; set; }
+        public string? Character { get; set; }
         public int? Age { get; set; }
     }
 
