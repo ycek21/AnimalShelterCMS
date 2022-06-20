@@ -39,7 +39,9 @@ namespace RestApi
                 opt => opt.MapFrom(src => src.AnimalType.Value));
 
             CreateMap<Animal, AnimalForUserWalkDto>();
-            CreateMap<Walk, WalkAssignedToUserDto>();
+            CreateMap<Walk, WalkAssignedToUserDto>()
+                .ForMember(dest => dest.AnimalName, opt => opt.MapFrom(src => src.Animal.Name))
+                .ForMember(dest => dest.AnimalProfileImageUrl, opt => opt.MapFrom(src => new List<Image>(src.Animal.Images)[0].Url));
             CreateMap<Walk, WalkForAnimalGetDto>();
             CreateMap<Size, Animal>();
             CreateMap<AnimalForCreationDto, Animal>();

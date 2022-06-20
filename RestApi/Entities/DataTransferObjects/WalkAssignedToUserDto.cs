@@ -10,6 +10,7 @@ namespace Entities.DataTransferObjects
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
-        public AnimalForUserWalkDto? Animal { get; set; }
+        public string AnimalName { get; set; }
+        public string AnimalProfileImageUrl { get; set; }
     }
 }
