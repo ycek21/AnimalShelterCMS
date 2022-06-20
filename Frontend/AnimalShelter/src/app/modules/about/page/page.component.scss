@@ -1,4 +1,5 @@
 .container {
+  width: 100vw;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -11,7 +12,7 @@
   vertical-align: top;
   max-width: 100%;
   max-height: 40rem;
-  padding: 5%;
+  padding: 5% 0;
 }
 .container > .info {
   flex: 1 0 0%;
@@ -53,4 +54,48 @@
 }
 .row_text {
   margin-bottom: 3%;
+}
+
+
+/* For extremely small screen devices */
+@media only screen and (max-width: 595px) {
+  .container{
+    flex-direction: column;
+  }
+
+  .container > .photo_wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+ 
+/* Small screen devices */
+@media only screen and (min-width: 500px) {
+  .container{
+    flex-direction: column;
+  }
+  .container > .photo_wrapper {
+    display: flex;
+    justify-content: center;
+    
+  }
+}
+ 
+/* Medium screen devices */
+@media only screen and (min-width: 768px) {
+  .container{
+    
+  }
+  .container > .photo_wrapper {
+    display: block;
+    padding: 0 5%;
+  }
+}
+ 
+/* Big screen devices */
+@media only screen and (min-width: 1000px) {
+  .container{
+    flex-direction: row-reverse;
+  }
 }
