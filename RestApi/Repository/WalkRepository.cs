@@ -17,16 +17,21 @@ namespace Repository
 
         }
 
-        public async Task<IEnumerable<Walk>> GetAnimalWalks(Guid AnimalId,bool trackChanges)
+        public async Task<IEnumerable<Walk>> GetAnimalWalks(Guid AnimalId, bool trackChanges)
         {
-            var walks = await FindByCondition(x => x.AnimalId == AnimalId,false).ToListAsync();
+            var walks = await FindByCondition(x => x.AnimalId == AnimalId, false).ToListAsync();
 
             return walks;
         }
-        
+
         public void CreateWalk(Walk walk)
         {
             Create(walk);
+        }
+
+        public void DeleteWalk(Walk walk)
+        {
+            Delete(walk);
         }
     }
 }
