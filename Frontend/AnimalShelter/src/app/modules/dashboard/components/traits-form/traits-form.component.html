@@ -1,0 +1,21 @@
+<mat-card class="card">
+  <mat-card-title style="text-align: center">Add {{ type }}</mat-card-title>
+  <mat-card-content>
+    <div class="example-container" style="text-align: center">
+      <mat-form-field>
+        <mat-label>Enter your {{ type }}</mat-label>
+        <input matInput placeholder="" required [(ngModel)]="trait" />
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions style="text-align: center">
+    <button
+      mat-raised-button
+      class="save_button"
+      [disabled]="trait === ''"
+      (click)="addTrait()"
+    >
+      Save
+    </button>
+  </mat-card-actions>
+</mat-card>

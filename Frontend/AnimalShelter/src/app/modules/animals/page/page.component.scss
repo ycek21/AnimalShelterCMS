@@ -9,6 +9,7 @@
   grid-auto-rows: 12rem;
   grid-gap: 0.5rem;
   margin-top: 1%;
+  padding: 15px;
 }
 .gallery__group {
   position: relative;
@@ -60,23 +61,25 @@
   color: white;
   text-align: center;
 }
-.filters__wrapper {
-  display: flex;
-  justify-content: center;
-}
+
 .filters__style {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 0.5%;
   width: 100%;
 }
 .filter__style-form {
   margin: 1%;
-  width: 25%;
+  width: 200px;
 }
 .filter__style-button {
   background-color: #26a450;
   margin-left: 1%;
+}
+
+@media screen and (max-width: 420px) {
+  .filters__style {
+    flex-direction: column;
+  }
 }

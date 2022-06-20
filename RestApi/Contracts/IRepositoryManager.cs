@@ -14,6 +14,7 @@ namespace Contracts
         ISizeRepository Size { get; }
         IImageRepository Image { get; }
         IConfigRepository Config { get; }
+        IWalkRepository Walk {get;}
         void Save();
         Task SaveAsync();
     }

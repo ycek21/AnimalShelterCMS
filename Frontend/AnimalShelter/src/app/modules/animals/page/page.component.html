@@ -1,55 +1,66 @@
 <div class="filters">
-  <div class="filters__style">
-    <form [formGroup]="filterForm">
-      <mat-form-field
-        class="filter__style-form"
-        *ngIf="filters && filters.sizes"
-      >
-        <mat-label>Size</mat-label>
-        <mat-select formControlName="size">
-          <mat-option *ngFor="let size of filters.sizes" [value]="size.value">
-            {{ size.value }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field
-        class="filter__style-form"
-        *ngIf="filters && filters.colors"
-      >
-        <mat-label>Color</mat-label>
-        <mat-select formControlName="color">
-          <mat-option
-            *ngFor="let color of filters.colors"
-            [value]="color.value"
-          >
-            {{ color.value }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field
-        class="filter__style-form"
-        *ngIf="filters && filters.animalTypes"
-      >
-        <mat-label>Animal type</mat-label>
-        <mat-select formControlName="animalType">
-          <mat-option
-            *ngFor="let type of filters.animalTypes"
-            [value]="type.value"
-          >
-            {{ type.value }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="clearFilter()"
-        class="filter__style-button"
-      >
-        Clear filters
-      </button>
-    </form>
-  </div>
+  <form [formGroup]="filterForm" class="filters__style">
+    <mat-form-field class="filter__style-form" *ngIf="filters && filters.sizes">
+      <mat-label>Size</mat-label>
+      <mat-select formControlName="size">
+        <mat-option *ngFor="let size of filters.sizes" [value]="size.value">
+          {{ size.value }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      class="filter__style-form"
+      *ngIf="filters && filters.colors"
+    >
+      <mat-label>Color</mat-label>
+      <mat-select formControlName="color">
+        <mat-option *ngFor="let color of filters.colors" [value]="color.value">
+          {{ color.value }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      class="filter__style-form"
+      *ngIf="filters && filters.animalTypes"
+    >
+      <mat-label>Animal type</mat-label>
+      <mat-select formControlName="animalType">
+        <mat-option
+          *ngFor="let type of filters.animalTypes"
+          [value]="type.value"
+        >
+          {{ type.value }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="filter__style-form" *ngIf="maxAges.length !== 0">
+      <mat-label>Maximum Age</mat-label>
+      <mat-select formControlName="maxAge">
+        <mat-option *ngFor="let age of maxAges" [value]="age">
+          {{ age }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="filter__style-form" *ngIf="filters">
+      <mat-label>Character</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="character"
+        placeholder="Character"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="clearFilter()"
+      class="filter__style-button"
+    >
+      Clear filters
+    </button>
+  </form>
 </div>
 <div class="gallery">
   <ng-container *ngFor="let data of dataSource">

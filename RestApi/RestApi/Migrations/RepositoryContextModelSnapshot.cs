@@ -131,12 +131,12 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("63229941-ad9f-4be5-b7d0-7388a4851791"),
+                            Id = new Guid("22af1e2e-c705-45b0-b803-48ed6dbd7e49"),
                             Value = "Dog"
                         },
                         new
                         {
-                            Id = new Guid("53bb8991-f7dd-4409-8286-ec2236c6398b"),
+                            Id = new Guid("ddc1e11f-986c-4b64-b140-8901591960f2"),
                             Value = "Cat"
                         });
                 });
@@ -159,62 +159,62 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e55c7c3a-2398-485d-b673-103c17b6c991"),
+                            Id = new Guid("31ff5a4b-f9d7-4a88-89e8-7c31ea9b143d"),
                             Value = "Black"
                         },
                         new
                         {
-                            Id = new Guid("451b4421-50aa-4915-9b5b-69ce6b241ae6"),
+                            Id = new Guid("5e11bd2a-99f4-471a-9be8-439fcb461f78"),
                             Value = "White"
                         },
                         new
                         {
-                            Id = new Guid("8e1267a3-e2f2-4396-b556-663227e29976"),
+                            Id = new Guid("a770746e-6252-4e8b-942f-8f680f5c96f1"),
                             Value = "Mixed"
                         },
                         new
                         {
-                            Id = new Guid("a3bf36c7-b6b2-44e0-8c8c-58de79228206"),
+                            Id = new Guid("c57ba40a-49d4-4500-a3d9-5c4bb6b58c94"),
                             Value = "Red"
                         },
                         new
                         {
-                            Id = new Guid("67d14cc9-e4b0-499f-b632-4d5e0c6a2704"),
+                            Id = new Guid("a064e38b-3944-4cf6-a51c-5476d1fc449c"),
                             Value = "Tricolor"
                         },
                         new
                         {
-                            Id = new Guid("04de7cb5-1f56-4269-8b7e-453baa927c9f"),
+                            Id = new Guid("070bf5e4-eb07-4fb1-a67f-2cc1df747d4f"),
                             Value = "Blue"
                         },
                         new
                         {
-                            Id = new Guid("00eba627-b485-4266-9635-7a3e3a172865"),
+                            Id = new Guid("e5023ca0-5df8-446c-bef3-a16f6d534f15"),
                             Value = "Grey"
                         },
                         new
                         {
-                            Id = new Guid("2fc290a4-2d36-45b9-aa1e-1f1d8dd6e593"),
+                            Id = new Guid("60e9c031-96ed-401f-820d-27dfb3c55b54"),
                             Value = "Fawn"
                         },
                         new
                         {
-                            Id = new Guid("05cd10a2-55f4-420b-aa1c-f9fbcba9d1f8"),
+                            Id = new Guid("a6d23da2-70b5-4645-825c-ecae432776e1"),
                             Value = "Cream"
                         },
                         new
                         {
-                            Id = new Guid("ed8f7ddd-8eca-4bc7-9a88-7ebec592dea7"),
+                            Id = new Guid("51d49c85-6fa6-4757-8619-8aa2d7b6570d"),
                             Value = "Gold"
                         },
                         new
                         {
-                            Id = new Guid("417c61f4-1375-4958-93f3-c80dee573ef1"),
+                            Id = new Guid("82c34944-08ab-4ea0-8577-16a15d3cc948"),
                             Value = "Yellow"
                         },
                         new
                         {
-                            Id = new Guid("ef84d4c5-fbc6-484f-9417-896d7e564035"),
+                            Id = new Guid("41db418c-9fa4-428f-bb24-322c7f499c0a"),
                             Value = "Brown"
                         });
                 });
@@ -244,56 +244,56 @@ namespace RestApi.Migrations
                         new
                         {
                             Key = "City",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 551, DateTimeKind.Local).AddTicks(9606),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(5898),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "Street",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(842),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7148),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "HouseNumber",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(855),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7159),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "Postcode",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(858),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7161),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "AccountNumber",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(860),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7163),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "Description",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(862),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7164),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "Name",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(865),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7166),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         },
                         new
                         {
                             Key = "Country",
-                            ModifiedAt = new DateTime(2022, 1, 16, 0, 37, 4, 552, DateTimeKind.Local).AddTicks(867),
+                            ModifiedAt = new DateTime(2022, 6, 19, 16, 22, 25, 615, DateTimeKind.Local).AddTicks(7169),
                             ModifiedBy = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             Value = ""
                         });
@@ -401,27 +401,27 @@ namespace RestApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c170ac5b-4e31-487b-ba06-5c9e985c307f"),
+                            Id = new Guid("406bb3a9-5c38-41c4-85ff-3667245eab32"),
                             Value = "Very small"
                         },
                         new
                         {
-                            Id = new Guid("750cc209-6102-4d17-9ec5-b6d9d4788525"),
+                            Id = new Guid("e8f5f6f8-2594-4b3d-b652-327cc8c6fe31"),
                             Value = "Small"
                         },
                         new
                         {
-                            Id = new Guid("6ec77095-31f5-4c2f-8582-b61b671bbfc0"),
+                            Id = new Guid("ca9b7b43-b191-42b1-b842-858a1ef6953c"),
                             Value = "Big"
                         },
                         new
                         {
-                            Id = new Guid("7f55d83b-b703-4d4d-97be-121f2b099f06"),
+                            Id = new Guid("69c080f9-3f05-4bb8-b710-83de405ef82b"),
                             Value = "Medium"
                         },
                         new
                         {
-                            Id = new Guid("fe5851b0-6ef8-4c91-9fb6-6bf92d72effb"),
+                            Id = new Guid("6966acf5-3e2a-4a80-9d47-20b8c60160a1"),
                             Value = "Very big"
                         });
                 });
@@ -510,17 +510,17 @@ namespace RestApi.Migrations
                         {
                             Id = "B22698B8-42A2-4115-9631-1C2D1E2AC5F7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "400af917-5dc8-45ba-aab6-afa4d423e726",
+                            ConcurrencyStamp = "620d8eb1-452a-426c-a11c-d3325d886e8a",
                             DateOfBirth = new DateTime(2000, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin.animalshelter@gmail.com",
-                            EmailConfirmed = false,
+                            EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Admin",
                             NormalizedEmail = "ADMIN.ANIMALSHELTER@GMAIL.COM",
                             NormalizedUserName = "ADMIN.ANIMALSHELTER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBFfLYgvQmrkIpQgTBiETwIeMTRtIJlTSAneo/qEZnAmyGDE4hvuRJTJWaN0Bteszg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHOGAJJwsSbS6xVqNCQfkg7gGwmS2gF4CTyro+OJDjwCsdqwv72pYP3O2X3R4hTeNg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2f85c26e-5d59-453e-ac68-7078b8b2cdfd",
+                            SecurityStamp = "90d4bbff-5573-490b-a342-d00beab8e1f6",
                             Surname = "Admin",
                             TwoFactorEnabled = false,
                             UserName = "admin.animalshelter@gmail.com"
@@ -585,14 +585,14 @@ namespace RestApi.Migrations
                         new
                         {
                             Id = "0a747698-be88-4c59-93d4-3bbccdf43dfc",
-                            ConcurrencyStamp = "f9b273fc-2b99-40e3-88b7-9c1213c18e70",
+                            ConcurrencyStamp = "036d52de-032b-41c2-a622-4ffc892e2e94",
                             Name = "CommonUser",
                             NormalizedName = "COMMON"
                         },
                         new
                         {
                             Id = "e643aedc-b67e-4ad2-9d84-7019ee5f4f21",
-                            ConcurrencyStamp = "fc03ce40-874d-41c6-9e0b-7810b21c9b38",
+                            ConcurrencyStamp = "b8302a42-3031-4842-90ba-8899e17dc152",
                             Name = "Administrator",
                             NormalizedName = "ADMIN"
                         });

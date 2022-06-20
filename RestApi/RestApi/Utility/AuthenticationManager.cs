@@ -106,5 +106,16 @@ namespace RestApi.Utility
 
             return await _userManager.IsEmailConfirmedAsync(entityUser);
         }
+
+        public async Task<IList<string>> GetUserRoles(string token)
+        {
+
+            var email = GetUserEmail(token);
+            var user = await _userManager.FindByEmailAsync(email);
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            return userRoles;
+        }
     }
 }
