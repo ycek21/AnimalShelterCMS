@@ -67,8 +67,7 @@ namespace RestApi.Controllers
             return Ok(userToReturn);
 
         }
-
-
+        
         [HttpGet("{userId}/walks", Name = "GetUserWalks"), Authorize(Roles = "Administrator, CommonUser")]
         public async Task<IActionResult> GetUserWalks(Guid userId)
         {
@@ -126,6 +125,19 @@ namespace RestApi.Controllers
             var newUserRole = await _userManager.GetRolesAsync(lookedForUser);
 
             return NoContent();
+        }
+
+        [HttpGet("{userEmail}", Name = "GetUser"),Authorize(Roles = "CommonUser, Administrator")]
+        public async Task<IActionResult> GetUser(string userEmail,bool trackChanges)
+        {
+            var user = await _userManager.Users.Where(x => x.Email == userEmail).FirstOrDefaultAsync();
+            
+            var userRole = await _userManager.GetRolesAsync(user);
+            var userDto = _mapper.Map<UserDto>(user);
+            userDto.Roles = userRole.ToList();
+
+            return Ok(userDto);
+
         }
 
     }

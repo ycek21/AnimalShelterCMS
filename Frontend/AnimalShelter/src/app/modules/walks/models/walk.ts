@@ -1,4 +1,8 @@
+import { Guid } from 'guid-typescript';
+
 export interface Walk {
-  Date: Date;
-  Name: string;
+  id: Guid;
+  date: Date;
+  animalName: string;
+  animalProfileImageUrl: string;
 }

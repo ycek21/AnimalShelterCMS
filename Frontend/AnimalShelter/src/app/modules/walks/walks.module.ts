@@ -1,7 +1,7 @@
 import { WalkTableComponent } from './components/walk-table/walk-table.component';
 import { WalksRoutingModule } from './walks-routing.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -56,6 +56,6 @@ import { PageComponent } from './page/page.component';
     WalksRoutingModule,
   ],
   declarations: [PageComponent, WalkTableComponent],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, DatePipe],
 })
 export class WalksModule {}

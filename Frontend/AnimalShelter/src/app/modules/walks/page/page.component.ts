@@ -1,6 +1,8 @@
+import { UserService } from './../../dashboard/services/userService/user.service';
+import { WalkService } from './../services/walk.service';
 import { Walk } from './../models/walk';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -8,8 +10,26 @@ import { Observable } from 'rxjs';
   styleUrls: ['./page.component.scss'],
 })
 export class PageComponent implements OnInit {
-  walks: Observable<Walk[]>;
-  constructor() {}
+  walks: Walk[];
+  constructor(
+    private walkService: WalkService,
+    private userService: UserService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService
+      .getUser(this.userService.userEmail)
+      .pipe(
+        switchMap((user) => {
+          return this.getUserWalks(user.id);
+        })
+      )
+      .subscribe((resp) => {
+        this.walks = resp;
+      });
+  }
+
+  getUserWalks(userId: string) {
+    return this.walkService.getAllWalksForUser(userId);
+  }
 }

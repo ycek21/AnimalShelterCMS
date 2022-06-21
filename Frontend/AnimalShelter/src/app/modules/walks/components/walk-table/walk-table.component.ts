@@ -8,10 +8,19 @@ import { Walk } from '../../models/walk';
   styleUrls: ['./walk-table.component.scss'],
 })
 export class WalkTableComponent implements OnInit {
-  @Input() walks: Observable<Walk[]>;
-  displayedColumns: string[] = ['name', 'date', 'actions'];
+  @Input() walks: Walk[];
+  displayedColumns: string[] = [
+    'date',
+    'animalName',
+    'animalProfileImageUrl',
+    'actions',
+  ];
 
   constructor() {}
 
   ngOnInit() {}
+
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:5001/${serverPath}`;
+  };
 }
