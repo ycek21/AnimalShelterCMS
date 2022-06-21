@@ -46,4 +46,8 @@ export class UserService {
   private getUserEmail() {
     return localStorage.getItem('userEmail');
   }
+  public getUser(email: string): Observable<User> {
+    const url = USERS_URL + `/${email}`;
+    return this.http.get<User>(url);
+  }
 }
