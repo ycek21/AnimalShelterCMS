@@ -17,6 +17,10 @@ export class PageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getUserWithWalks();
+  }
+
+  getUserWithWalks() {
     this.userService
       .getUser(this.userService.userEmail)
       .pipe(
@@ -28,8 +32,12 @@ export class PageComponent implements OnInit {
         this.walks = resp;
       });
   }
-
   getUserWalks(userId: string) {
     return this.walkService.getAllWalksForUser(userId);
+  }
+  deleteWalk(walkId: string) {
+    this.walkService.deleteWalk(walkId).subscribe((resp) => {
+      this.getUserWithWalks();
+    });
   }
 }

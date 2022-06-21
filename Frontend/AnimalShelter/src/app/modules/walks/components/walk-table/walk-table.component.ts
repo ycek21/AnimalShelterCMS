@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  EventEmitter,
+  Output,
+  OnChanges,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Walk } from '../../models/walk';
 
@@ -7,8 +14,9 @@ import { Walk } from '../../models/walk';
   templateUrl: './walk-table.component.html',
   styleUrls: ['./walk-table.component.scss'],
 })
-export class WalkTableComponent implements OnInit {
+export class WalkTableComponent implements OnChanges {
   @Input() walks: Walk[];
+  @Output() walkToDelete: EventEmitter<string> = new EventEmitter();
   displayedColumns: string[] = [
     'date',
     'animalName',
@@ -18,9 +26,12 @@ export class WalkTableComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnChanges() {}
 
   public createImgPath = (serverPath: string) => {
     return `https://localhost:5001/${serverPath}`;
   };
+  public deleteWalk(walkId: string) {
+    this.walkToDelete.emit(walkId);
+  }
 }

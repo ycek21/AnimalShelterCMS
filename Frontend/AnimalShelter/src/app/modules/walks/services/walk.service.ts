@@ -16,4 +16,9 @@ export class WalkService {
 
     return this.http.get<Walk[]>(url);
   }
+  deleteWalk(walkId: string) {
+    const url = WALKS_URL + `/${walkId}`;
+
+    return this.http.delete(url);
+  }
 }

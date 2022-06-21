@@ -24,7 +24,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <button type="button" mat-icon-button>
+      <button type="button" mat-icon-button (click)="deleteWalk(element.id)">
         <mat-icon>delete_outline</mat-icon>
       </button>
     </td>
