@@ -27,6 +27,12 @@ namespace Repository
             .SingleOrDefaultAsync();
         }
 
+        public async Task<User> GetUserWithWalksAsync(string userId, bool trackChanges)
+        {
+            return await FindByCondition(u => u.Id.Equals(userId), trackChanges).Include(x => x.Walks)
+            .SingleOrDefaultAsync();
+        }
+
         public void CreateUser(User user)
         {
             Create(user);

@@ -68,6 +68,32 @@ namespace RestApi.Controllers
 
         }
 
+
+        [HttpGet("{userId}/walks", Name = "GetUserWalks"), Authorize(Roles = "Administrator, CommonUser")]
+        public async Task<IActionResult> GetUserWalks(Guid userId)
+        {
+            var user = await _repository.User.GetUserWithWalksAsync(userId.ToString(), false);
+
+            if (user.Walks.Count == 0)
+            {
+                return NotFound("User doesn't have any walks assigned.");
+            }
+
+            List<WalkAssignedToUserDto> walksToReturn = new List<WalkAssignedToUserDto>();
+
+            foreach (var userWalk in user.Walks)
+            {
+                var animal = await _repository.Animal.GetAnimalById(userWalk.AnimalId, false);
+                userWalk.Animal = animal;
+
+                var walkAsDto = _mapper.Map<WalkAssignedToUserDto>(userWalk);
+                walksToReturn.Add(walkAsDto);
+            }
+
+            return Ok(walksToReturn);
+
+        }
+
         [HttpPatch("{Id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> PatchUserRole(string Id, [FromBody] RoleForPatchDto role)
         {
