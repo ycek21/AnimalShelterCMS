@@ -11,6 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form',
@@ -36,7 +37,8 @@ export class FormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackbarService: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -60,22 +62,38 @@ export class FormComponent implements OnInit {
           localStorage.setItem('userEmail', userEmail);
           localStorage.setItem('userRole', userRole);
           this.authService.setLogged(true);
+          this.snackbarService.open('Sucessfully logged in. ', 'Close', {
+            duration: 4000,
+          });
           this.router.navigate(['home']);
         }
       },
       (error: HttpErrorResponse) => {
-        if (error.status === 403) {
-          console.error('iSForbidded');
-          this.loginForm.reset();
-        }
+        const message: string = error.error;
+        this.snackbarService.open(message, 'Close', { duration: 4000 });
+        this.loginForm.reset();
       }
     );
   }
 
   register() {
-    this.authService.register(this.registerForm.value).subscribe((resp) => {
-      this.router.navigate(['/home']);
-    });
+    this.authService.register(this.registerForm.value).subscribe(
+      (resp) => {
+        this.snackbarService.open(
+          'Sucessfully registered. Confirm an email to login.',
+          'Close',
+          { duration: 4000 }
+        );
+        this.router.navigate(['/home']);
+      },
+      (error: HttpErrorResponse) => {
+        let message: string = '';
+        if (typeof error.error === 'object') {
+          message = Object.values(error.error).join('');
+        }
+        this.snackbarService.open(message, 'Close', { duration: 4000 });
+      }
+    );
   }
   validatorPassword(fc: FormControl) {
     const value = fc.value as string;

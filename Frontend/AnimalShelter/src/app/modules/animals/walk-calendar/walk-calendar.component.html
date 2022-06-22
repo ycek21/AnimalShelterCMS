@@ -1,0 +1,57 @@
+<div class="container">
+  <mat-calendar
+    class="container__calendar"
+    [(selected)]="selectedDate"
+    (selectedChange)="setTimeOnCalendarChange($event)"
+  ></mat-calendar>
+  <div class="container__formWrapper">
+    <h2 class="container__title">Plan a walk</h2>
+
+    <mat-form-field
+      class="container__timeSelect"
+      *ngIf="authService.isUserLoggedIn() | async"
+    >
+      <mat-label>Choose time</mat-label>
+      <mat-select [formControl]="selectedTimeControl">
+        <mat-option
+          *ngFor="let timeOption of timeOptions"
+          [value]="timeOption"
+          >{{ timeOption }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <div
+      class="container__selectedDate"
+      *ngIf="authService.isUserLoggedIn() | async"
+    >
+      Selected walk date:
+      <b>{{ selectedDate | date: "d.MM.yyyy h:mm a" }}</b>
+    </div>
+    <div
+      class="container__formActions"
+      *ngIf="authService.isUserLoggedIn() | async"
+    >
+      <button mat-raised-button (click)="resetTimeControl()" color="warn">
+        Reset
+      </button>
+      <button
+        mat-raised-button
+        (click)="postWalk()"
+        [disabled]="selectedTimeControl.invalid"
+        class="container__button"
+      >
+        Appoint
+      </button>
+    </div>
+
+    <a
+      *ngIf="(authService.isUserLoggedIn() | async) === false"
+      class="container__selectedDate container__selectedDate--logedOut"
+      routerLink="/user"
+    >
+      Appoint a meeting with this cute pet after login. Click the link to
+      redirect.
+    </a>
+  </div>
+</div>
