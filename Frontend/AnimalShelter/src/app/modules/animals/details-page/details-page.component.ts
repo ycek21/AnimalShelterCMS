@@ -33,12 +33,15 @@ export class DetailsPageComponent implements OnInit {
   postWalkWithAnimal(walk: WalkForPost) {
     this.walkService.postWalk(walk).subscribe(
       (walk) => {
-        this.snackbarService.open('Walk was appointed.');
+        this.snackbarService.open('Walk was appointed.', 'Close', {
+          duration: 4000,
+        });
+
         this.router.navigate(['/walks']);
       },
       (error) => {
         const message = 'Walk wasnt appointed.' + error.error;
-        this.snackbarService.open(message);
+        this.snackbarService.open(message, 'Close', { duration: 4000 });
       }
     );
   }

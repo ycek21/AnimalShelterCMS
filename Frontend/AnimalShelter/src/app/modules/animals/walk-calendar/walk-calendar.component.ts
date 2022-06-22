@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../user/services/auth.service';
 import { WalkForPost } from '../../walks/models/walkForPost';
 
 @Component({
@@ -8,7 +9,7 @@ import { WalkForPost } from '../../walks/models/walkForPost';
   styleUrls: ['./walk-calendar.component.scss'],
 })
 export class WalkCalendarComponent implements OnInit {
-  constructor() {}
+  constructor(public authService: AuthService) {}
 
   @Input() animalId: string = undefined;
   @Output() postWalkEmitter: EventEmitter<WalkForPost> = new EventEmitter();

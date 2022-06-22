@@ -13,6 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../../shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { SharedModule } from './../../shared/shared.module';
     MatNativeDateModule,
     ReactiveFormsModule,
     SharedModule,
+    MatSnackBarModule,
   ],
   declarations: [PageComponent, FormComponent],
   providers: [MatDatepickerModule],

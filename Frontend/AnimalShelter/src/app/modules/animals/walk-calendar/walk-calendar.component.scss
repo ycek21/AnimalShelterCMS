@@ -26,7 +26,15 @@
 .container__selectedDate {
     font-family: "Montserrat";
     margin-bottom: 10px;
+}
 
+.container__selectedDate--logedOut{
+    text-align: center;
+    color: black;
+}
+
+.container__selectedDate--logedOut:hover {
+    cursor: pointer;
 }
 
 .container__formActions {
