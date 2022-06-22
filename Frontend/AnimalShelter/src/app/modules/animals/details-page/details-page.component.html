@@ -1,9 +1,14 @@
 <div class="grid-container">
-  <div class="photo_wrapper">
+  <div class="photo_wrapper" *ngIf="profileUrl && profileUrl.url">
     <img class="photo__img" [src]="createImgPath(profileUrl.url)" />
   </div>
-  <div class="empty_space"></div>
-  <div class="text__wrapper">
+  <div class="walk_calendar_wrapper">
+    <app-walk-calendar
+      [animalId]="animal?.id"
+      (postWalkEmitter)="postWalkWithAnimal($event)"
+    ></app-walk-calendar>
+  </div>
+  <div class="text__wrapper" *ngIf="animal">
     <div class="text__wrapper-header">
       <div class="text_wrapper-title">
         <h1 style="font-family: Montserrat">
@@ -38,7 +43,7 @@
       {{ animal.description }}
     </div>
   </div>
-  <div class="gallery">
+  <div class="gallery" *ngIf="animal">
     <ng-container *ngFor="let data of animal.images">
       <div class="gallery__group">
         <img class="gallery__img" [src]="createImgPath(data.url)" />

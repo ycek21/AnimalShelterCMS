@@ -1,9 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { AnimalsService } from './../services/animals.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Animal } from '../models/animal';
 import { Img } from '../models/image';
+import { WalkForPost } from '../../walks/models/walkForPost';
+import { WalkService } from '../../walks/services/walk.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-details-page',
@@ -15,12 +19,28 @@ export class DetailsPageComponent implements OnInit {
   profileUrl: Img;
   constructor(
     private route: ActivatedRoute,
-    private animalsService: AnimalsService
+    private animalsService: AnimalsService,
+    private walkService: WalkService,
+    private snackbarService: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.getAnimal(id);
+  }
+
+  postWalkWithAnimal(walk: WalkForPost) {
+    this.walkService.postWalk(walk).subscribe(
+      (walk) => {
+        this.snackbarService.open('Walk was appointed.');
+        this.router.navigate(['/walks']);
+      },
+      (error) => {
+        const message = 'Walk wasnt appointed.' + error.error;
+        this.snackbarService.open(message);
+      }
+    );
   }
 
   getAnimal(id: string) {

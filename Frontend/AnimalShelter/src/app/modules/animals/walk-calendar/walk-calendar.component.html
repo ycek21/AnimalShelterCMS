@@ -1,0 +1,34 @@
+<div class="container">
+  <mat-calendar
+    class="container__calendar"
+    [(selected)]="selectedDate"
+    (selectedChange)="setTimeOnCalendarChange($event)"
+  ></mat-calendar>
+  <div>
+    <p>Plan a walk</p>
+
+    <mat-form-field>
+      <mat-label>Choose time</mat-label>
+      <mat-select [formControl]="selectedTimeControl">
+        <mat-option
+          *ngFor="let timeOption of timeOptions"
+          [value]="timeOption"
+          >{{ timeOption }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      Do you want to plan a walk on
+      {{ selectedDate | date: "d.MM.yyyy h:mm a" }}
+    </div>
+    <button mat-raised-button (click)="resetTimeControl()">Nie</button>
+    <button
+      mat-raised-button
+      (click)="postWalk()"
+      [disabled]="selectedTimeControl.invalid"
+    >
+      Tak
+    </button>
+  </div>
+</div>
