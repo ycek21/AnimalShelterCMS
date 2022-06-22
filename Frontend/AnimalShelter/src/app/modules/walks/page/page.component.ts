@@ -3,6 +3,8 @@ import { WalkService } from './../services/walk.service';
 import { Walk } from './../models/walk';
 import { Component, OnInit } from '@angular/core';
 import { Observable, tap, switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-page',
@@ -10,10 +12,11 @@ import { Observable, tap, switchMap } from 'rxjs';
   styleUrls: ['./page.component.scss'],
 })
 export class PageComponent implements OnInit {
-  walks: Walk[];
+  walks: Walk[] = [];
   constructor(
     private walkService: WalkService,
-    private userService: UserService
+    private userService: UserService,
+    private snackbarService: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -28,9 +31,19 @@ export class PageComponent implements OnInit {
           return this.getUserWalks(user.id);
         })
       )
-      .subscribe((resp) => {
-        this.walks = resp;
-      });
+      .subscribe(
+        (resp) => {
+          this.walks = resp;
+          this.snackbarService.open('Walk sucessfully deleted. ', 'Close', {
+            duration: 4000,
+          });
+        },
+        (error: HttpErrorResponse) => {
+          if (error.status === 404) {
+            this.walks = [];
+          }
+        }
+      );
   }
   getUserWalks(userId: string) {
     return this.walkService.getAllWalksForUser(userId);

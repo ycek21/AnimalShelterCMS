@@ -21,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import {
   MatDialogModule,
@@ -54,6 +55,7 @@ import { PageComponent } from './page/page.component';
     MatDialogModule,
     FormsModule,
     WalksRoutingModule,
+    MatSnackBarModule,
   ],
   declarations: [PageComponent, WalkTableComponent],
   providers: [MatDatepickerModule, DatePipe],

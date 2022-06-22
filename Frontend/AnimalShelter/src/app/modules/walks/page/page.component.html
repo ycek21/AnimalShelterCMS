@@ -1,6 +1,11 @@
 <div class="table">
   <app-walk-table
+    *ngIf="walks.length > 0"
     [walks]="walks"
     (walkToDelete)="deleteWalk($event)"
   ></app-walk-table>
+
+  <p *ngIf="walks.length === 0" class="infoNoWalks">
+    User doesn't have any walks. Checkout our animals and set up a walk.
+  </p>
 </div>
