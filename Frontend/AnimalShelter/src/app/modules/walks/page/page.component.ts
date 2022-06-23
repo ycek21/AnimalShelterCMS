@@ -34,9 +34,6 @@ export class PageComponent implements OnInit {
       .subscribe(
         (resp) => {
           this.walks = resp;
-          this.snackbarService.open('Walk sucessfully deleted. ', 'Close', {
-            duration: 4000,
-          });
         },
         (error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -50,6 +47,9 @@ export class PageComponent implements OnInit {
   }
   deleteWalk(walkId: string) {
     this.walkService.deleteWalk(walkId).subscribe((resp) => {
+      this.snackbarService.open('Walk sucessfully deleted. ', 'Close', {
+        duration: 4000,
+      });
       this.getUserWithWalks();
     });
   }
