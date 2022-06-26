@@ -69,7 +69,7 @@ export class FormComponent implements OnInit {
         }
       },
       (error: HttpErrorResponse) => {
-        const message: string = error.error;
+        const message: string = error.error.error;
         this.snackbarService.open(message, 'Close', { duration: 4000 });
         this.loginForm.reset();
       }
