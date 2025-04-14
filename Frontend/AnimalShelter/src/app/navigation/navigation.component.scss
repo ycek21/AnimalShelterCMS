@@ -1,0 +1,85 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  color: black;
+  background: #fafafa;
+}
+
+.mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  color: black;
+  background-color: #fafafa;
+  font-family: "Montserrat";
+}
+.hidden {
+  display: none;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.title {
+  cursor: pointer;
+  margin-left: 10vh;
+}
+.title:hover {
+  color: #26a450;
+}
+mat-toolbar a {
+  display: inline-block;
+  margin: 0 10px;
+  color: black;
+  text-decoration: none;
+  font-family: "Montserrat";
+}
+mat-toolbar a:hover {
+  color: #26a450;
+}
+.sub__header {
+  background-color: #26a450;
+  color: white;
+  height: 7vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.sub__header--text {
+  font-size: 3vh;
+  font-family: "Montserrat";
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin-left: 10vh;
+}
+
+@media (max-width: 630px) {
+  .toolbar__items {
+    display: none;
+  }
+}
+.sidenav-button {
+  display: flex;
+  align-content: flex-end;
+}
+.sidenav-logo {
+  height: fit-content;
+}
+.user-icon {
+  display: inline-flex;
+  vertical-align: middle;
+}
+.toolbar__items {
+  margin-right: 10vh;
+}
+.toolbar__logo {
+  max-width: 30px;
+  max-height: 40px;
+  margin: 0 auto;
+}

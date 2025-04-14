@@ -1,0 +1,6 @@
+<app-user-table
+  [users]="users"
+  [userEmail]="userEmail"
+  (userToDelete)="deleteUser($event)"
+  (userToChangeTheRole)="changeRole($event)"
+></app-user-table>

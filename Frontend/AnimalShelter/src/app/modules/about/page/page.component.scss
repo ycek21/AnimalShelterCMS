@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.container > .photo_wrapper {
+  flex: 2 0 0%;
+  text-align: right;
+}
+.photo_wrapper > .photo__img {
+  vertical-align: top;
+  max-width: 100%;
+  max-height: 40rem;
+  padding: 5%;
+}
+.container > .info {
+  flex: 1 0 0%;
+  padding: 3%;
+}
+
+.info__title__wrapper {
+  display: flex;
+  justify-content: center;
+}
+.info__title__wrapper_style {
+  font-family: "Montserrat";
+  font-size: 1.5rem;
+  margin-bottom: 3%;
+}
+.info__desc_wrapper {
+  text-align: justify;
+  text-justify: inter-word;
+  margin-top: 3%;
+}
+.info__desc_wrapper_style {
+  font-family: "Montserrat";
+  font-size: 1rem;
+}
+.info__contact_title_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+.info__contact_title_wrapper-style {
+  font-family: "Montserrat";
+  font-size: 1.5rem;
+  margin-bottom: 3%;
+}
+.info__text_wrapper {
+  margin-top: 3%;
+  font-family: "Montserrat";
+  font-size: 1rem;
+}
+.row_text {
+  margin-bottom: 3%;
+}
